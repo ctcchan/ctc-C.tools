@@ -143,7 +143,7 @@ void primeReference() {  // reference to Larry Solomon's web site
         << "http://solomonsmusic.net/pcsets.htm (accessed November 7, 2015)." << endl;
 }
 
-int mod(int num, int sizeRange){	// make sure pitch classes are in the range of sizeRange (default: 12)
+int mod(int num, int sizeRange) {	// make sure pitch classes are in the range of sizeRange (default: 12)
     while(num >= sizeRange)
         num -= sizeRange; // keep subtracting sizeRange from input until it is in range
     while(num < 0)
@@ -272,8 +272,8 @@ void permute(string soFar, string rest, int arrSize, char out, ofstream &outFile
     }
 }
 
-void subsets(string soFar, string rest, char out, ofstream &outFile){	// print out all subsets of a given set
-    if (rest == ""){	// convert char symbols from the sub-strings of soFar to pitches, then print out
+void subsets(string soFar, string rest, char out, ofstream &outFile) {	// print out all subsets of a given set
+    if (rest == "") {	// convert char symbols from the sub-strings of soFar to pitches, then print out
         for (int i = 0; i < static_cast<int>(soFar.length()); i++) {
             cout << TABLE[charToNum(soFar[i])];
             if (out == 'y')
