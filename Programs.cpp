@@ -528,8 +528,7 @@ void primeTable() {  // print out the table of pitch class sets by Larry Solomon
     if (!inFile) {   // make sure the file is in the same directory
         cout << "The file \"setTable.txt\" is not found." << endl << endl;
         inFile.clear();
-    }
-    else {
+    } else {
         while (!inFile.eof()) {  // read the entire file and print it out
             getline(inFile, entireTable);
             cout << entireTable << endl;
@@ -541,8 +540,7 @@ void primeTable() {  // print out the table of pitch class sets by Larry Solomon
     if (!inFile2) {   // make sure the file is in the same directory
         cout << "The file \"setTableDescription.txt\" is not found." << endl << endl;
         inFile2.clear();
-    }
-    else {
+    } else {
         while (!inFile2.eof()) {  // read the entire file and print it out
             getline(inFile2, entireTable);
             cout << entireTable << endl;
