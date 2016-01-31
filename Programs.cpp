@@ -308,18 +308,18 @@ void primeSet() {
     // this solution sometimes doesn't work; keep for reference only
     // 0 1 3 7 8 is wrong; the [x- 1] position is incorrect?
     // find position of the smallest outer, then 2nd, 3rd... pitches in the normal sets
-    for(int i = 0; i < x * 4; i++) {
-    position = (multiRow[i][x - 1] <= multiRow[position][x - 1]) ?
-    // most important to first determine the outer pitch is the smallest
-    // then the first pitch (+- 1); sometimes 0138 cannot be reduced to 0237
-    (multiRow[i][1] - 1 <= multiRow[position][1]) ?
-    // if position 2-4 are all less/equal, return i, else return the last smaller value
-    ((multiRow[i][2] <= multiRow[position][2]) &&
-    (multiRow[i][3] <= multiRow[position][3]) &&
-    (multiRow[i][4] <= multiRow[position][4]) ? i : position)
-    : position  // if position 1 is NOT less
-    : position; // if position x - 1 (last) is NOT less
-    }
+        for(int i = 0; i < x * 4; i++) {
+            position = (multiRow[i][x - 1] <= multiRow[position][x - 1]) ?
+                // most important to first determine the outer pitch is the smallest
+                // then the first pitch (+- 1); sometimes 0138 cannot be reduced to 0237
+                (multiRow[i][1] - 1 <= multiRow[position][1]) ?
+                // if position 2-4 are all less/equal, return i, else return the last smaller value
+                ((multiRow[i][2] <= multiRow[position][2]) &&
+                 (multiRow[i][3] <= multiRow[position][3]) &&
+                 (multiRow[i][4] <= multiRow[position][4]) ? i : position)
+                : position  // if position 1 is NOT less
+                : position; // if position x - 1 (last) is NOT less
+        }
     */
     int posArr[48];   // store the smallest numbers from each column
     smallest = 12;
@@ -367,31 +367,31 @@ void primeSet() {
         8-26                (0,1,2,4,5,7,9,10)  (0,1,3,4,5,7,8,10)
         */
     /*
-       int sumArr[200] = {0};
-       for(int i = 0; i < x * 4; i++) { // find the sum of each row
-       for(int j = 0; j < x; j++)
-       sumArr[i] += multiRow[i][j];
-       }
-       for(int i = 0; i < x * 4; i++) {
-    // if the outer pitch in a row is the least, check the sum of all pitches
-    // if the row is also the least; then it is the prime set
-    position = (multiRow[i][x - 1] <= multiRow[position][x - 1]) ?
-    (sumArr[i] <= sumArr[position] ? i : position) : position;
+     int sumArr[200] = {0};
+    for(int i = 0; i < x * 4; i++) { // find the sum of each row
+        for(int j = 0; j < x; j++)
+            sumArr[i] += multiRow[i][j];
+    }
+    for(int i = 0; i < x * 4; i++) {
+        // if the outer pitch in a row is the least, check the sum of all pitches
+        // if the row is also the least; then it is the prime set
+        position = (multiRow[i][x - 1] <= multiRow[position][x - 1]) ?
+            (sumArr[i] <= sumArr[position] ? i : position) : position;
     }
     */
     programHeading(x, row, choice, outputFile);
     /*
-       for(int i = 0; i < x * 4; i++) { // print out all the sets for checking
-       for(int j = 0; j < x; j++) {
-       cout << multiRow[i][j] << " ";
-       if(choice == 'y')
-       outputFile << multiRow[i][j] << " ";
-       }
-       cout << endl;
-       if(choice == 'y')
-       outputFile << endl;
-       }
-       */
+        for(int i = 0; i < x * 4; i++) { // print out all the sets for checking
+            for(int j = 0; j < x; j++) {
+                cout << multiRow[i][j] << " ";
+                if(choice == 'y')
+                    outputFile << multiRow[i][j] << " ";
+            }
+            cout << endl;
+            if(choice == 'y')
+                outputFile << endl;
+        }
+    */
 
     for (int i = 0; i < x; i++) { // print out the prime set (multiRow[position][i] only consist of integers)
         if (i == 0) {

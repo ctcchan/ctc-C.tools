@@ -154,12 +154,12 @@ int mod(int num, int sizeRange) {	// make sure pitch classes are in the range of
 // same as mod() above, use recursion instead of loop
 // sometimes causes stack-overflow in multiTable()
 int modRecur(int num, int sizeRange) {
-if (num >= sizeRange)
-return modRecur(num - sizeRange, sizeRange);
-else if (num < 0)
-return modRecur(num + sizeRange, sizeRange);
-else
-return num;
+    if (num >= sizeRange)
+        return modRecur(num - sizeRange, sizeRange);
+    else if (num < 0)
+        return modRecur(num + sizeRange, sizeRange);
+    else
+        return num;
 }
 */
 void swap(int &a, int &b) {	// swap a and b
