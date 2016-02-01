@@ -1,2 +1,2 @@
 all:
-	g++ -o out main.cpp GlobalVariables.cpp Modules.cpp Programs.cpp
+	g++ -o ctools main.cpp GlobalVariables.cpp Modules.cpp Programs.cpp
