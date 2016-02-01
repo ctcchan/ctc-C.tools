@@ -23,7 +23,7 @@ int main() {
     } while (valid == false || menuChoice != 0);
     // valid is a global variable it is changed inside programCalling()
 
-    cout << "Exiting the program..." << endl; // end of program
+    cout << "Exiting the program..." << endl << endl; // end of program
 
     return 0;
 }
