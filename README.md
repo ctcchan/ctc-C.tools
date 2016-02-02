@@ -18,6 +18,6 @@ Description: This program lets you construct pitch sets, rows or matrixes from i
 8. Construct a multiplication table with inversion: The multiplication table is inverted.
 9. Construct a multiplication table with inversion in rotation: The multiplication table is both inverted and rotated.
 10. Compute the prime set from a given set
-11. Print the table of pitch class sets
+11. Print the table of pitch class sets: This program calculates the Prime Set from a given set of pitches. It uses a text files that contains all the Forte numbers of pitch sets and references it through C++'s 'standard IO.
 12. Find all permutations of a given set
 13. Find all subsets of a given set
