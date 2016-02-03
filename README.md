@@ -19,8 +19,8 @@
 9. Construct a multiplication table with inversion in rotation: The multiplication table is both inverted and rotated.
 10. Compute the prime set from a given set
 11. Print the table of pitch class sets: This program calculates the Prime Set from a given set of pitches. It uses a text files that contains all the Forte numbers of pitch sets and references it through C++'s 'standard IO.
-12. Find all permutations of a given set
-13. Find all subsets of a given set
+12. Find all permutations of a given set: This program finds all permutation of a set given by the user.
+13. Find all subsets of a given set: This program finds all subsets of a set given by the user.
 
 ### Download ###
 Download using Git.
@@ -32,11 +32,11 @@ Installing inside the ctc-C.tools directory.
 
     make
 
-Next, put the binary file "ctools" in your bash path
+Next, copy the binary file "ctools" in your bash path.
 
-    mv ctools /usr/local/bin
+    cp ctools /usr/local/bin
     export PATH=$PATH:/usr/local/bin
 
-...or simply run it with the executable file "ctools"
+...or simply run it with the executable file "ctools" while you are in the ctc-C.tools directory
 
     ./ctools
