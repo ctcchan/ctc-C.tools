@@ -25,18 +25,18 @@
 ### Download ###
 Download using Git.
 
-    git clone https://github.com/ctcchan/ctc-C.tools.git;
+    git clone https://github.com/ctcchan/ctc-C.tools.git
 
 ### Installation ###
 Installing inside the ctc-C.tools directory.
 
-    Make;
+    make
 
 Next, put the binary file "ctools" in your bash path
 
-    mv ctools /usr/local/bin;
-    export PATH=$PATH:/usr/local/bin;
+    mv ctools /usr/local/bin
+    export PATH=$PATH:/usr/local/bin
 
 ...or simply run it with the executable file "ctools"
 
-    ./ctools;
+    ./ctools
