@@ -1,5 +1,5 @@
 # ctc-C.tools #
-###Command Line Tools for Composers###
+### Command Line Tools for Composers ###
 
 **Title**: “ctc-C.tools” version 1.5
 **Year**: 2015-present
@@ -22,12 +22,12 @@
 12. Find all permutations of a given set
 13. Find all subsets of a given set
 
-###Download###
+### Download ###
 Download using Git.
 
     git clone https://github.com/ctcchan/ctc-C.tools.git;
 
-###Installation###
+### Installation ###
 Installing inside the ctc-C.tools directory.
 
     Make;
