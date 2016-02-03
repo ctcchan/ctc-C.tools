@@ -37,6 +37,6 @@ Next, copy the binary file "ctools" in your bash path.
     cp ctools /usr/local/bin
     export PATH=$PATH:/usr/local/bin
 
-...or simply run it with the executable file "ctools" while you are in the ctc-C.tools directory
+...or simply run it with the executable file "ctools" while you are in the ctc-C.tools directory.
 
     ./ctools
