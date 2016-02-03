@@ -22,11 +22,21 @@
 12. Find all permutations of a given set
 13. Find all subsets of a given set
 
-###Installation###
+###Download###
 Download using Git.
 
-    cd ~;
     git clone https://github.com/ctcchan/ctc-C.tools.git;
-    make;
 
-Put the binary file in your $PATH, or simply run it with ./ctools
+###Installation###
+Installing inside the ctc-C.tools directory.
+
+    Make;
+
+Next, put the binary file "ctools" in your bash path
+
+    mv ctools /usr/local/bin;
+    export PATH=$PATH:/usr/local/bin;
+
+...or simply run it with the executable file "ctools"
+
+    ./ctools;
