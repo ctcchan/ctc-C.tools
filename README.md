@@ -1,12 +1,12 @@
-# ctc-C.tools
-__Command Line Tools for Composers__
+# ctc-C.tools #
+###Command Line Tools for Composers###
 
-__Title__: “ctc-C.tools” version 1.5
-__Year__: 2015-present
-__Development Language__: C++
-__Platform__: Mac OSX/Windows
-__Interface__: CLI
-__Description__: This program lets you construct pitch sets, rows or matrixes from input, then display them or outputs them to a file in the same directory. There are thirteen sub-programs available:
+**Title**: “ctc-C.tools” version 1.5
+**Year**: 2015-present
+**Development Language**: C++
+**Platform**: Mac OSX/Windows
+**Interface**: CLI
+**Description**: This program lets you construct pitch sets, rows or matrixes from input, then display them or outputs them to a file in the same directory. There are thirteen sub-programs available:
 
 1. Generate a row of random pitches: This program lets you generate a list of up to 10000 random pitches with the option to output to a text file. It implements the ctime library in C++.
 2. Construct a row with input of any integers: This program takes user input of any integers to form a row of up to 50 pitches. When the input is more than 12 or less than 0, the program modulates it back to the "normal" range by continuously adding or subtracting 12. The user can then create a row based on those "normalized" pitches.
@@ -19,5 +19,14 @@ __Description__: This program lets you construct pitch sets, rows or matrixes fr
 9. Construct a multiplication table with inversion in rotation: The multiplication table is both inverted and rotated.
 10. Compute the prime set from a given set
 11. Print the table of pitch class sets: This program calculates the Prime Set from a given set of pitches. It uses a text files that contains all the Forte numbers of pitch sets and references it through C++'s 'standard IO.
-12. Find all permutations of a given set: This program finds all permutations of a set input by the user.
-13. Find all subsets of a given set: This program finds all subsets of a set input by the user.
+12. Find all permutations of a given set
+13. Find all subsets of a given set
+
+###Installation###
+Download using Git.
+
+    cd ~;
+    git clone https://github.com/ctcchan/ctc-C.tools.git;
+    make;
+
+Put the binary file in your $PATH, or simply run it with ./ctools
