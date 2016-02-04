@@ -353,4 +353,3 @@
 349	10-6*(6)	012346789A	888885		Messiaen mode 7 (1111211112)
 350	11-1*		0123456789A	AAAAA5		Chromatic Undecamirror
 351	12-1*(1)	0123456789AB	CCCCC6		Chromatic Scale/Dodecamirror (111111111111)
-

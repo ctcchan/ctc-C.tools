@@ -31,4 +31,3 @@ all-comb	The set is known as an all-combinatorial set (see Glossary).
 AAAA5		The last two sets in the table have their IVs designated in hexadecimal; A=10, B=11, C=12
  	 
 1. Normally, sets with B names have complements without the B ending and vice versa. 8-12<, however, has the complement 4-12, and 8-12B has the complement 4-12B.
-
