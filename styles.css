@@ -13,7 +13,7 @@ html, body {
     font-size: 12px;
 }
 
-nav {
+nav.center {
     border: 1px solid rgba(255, 255, 255, .5);
     /* same as transition: background-color .5s ease-out .1s; */
     transition-property: background-color;
@@ -37,7 +37,7 @@ nav:hover {
 }
 
 nav::after {
-    content: '';
+    content: ' ';
     display: block;
     width: 10px;
     height: 1000px;
@@ -85,8 +85,8 @@ h1 {
 }
 
 h2 {
-    font: 3em Georgia, "Times New Roman", Times, serif;
-    margin-bottom: .2em;
+    font: 3.5em Georgia, "Times New Roman", Times, serif;
+    margin-bottom: .3em;
 }
 
 h3 {
