@@ -9,13 +9,12 @@
 }
 
 html, body {
-    background: #888; /* grey */
-    margin: 0;
+    background: #888;
 }
 
 nav {
     border: 1px solid rgba(255, 255, 255, .5);
-    /* same as transition: background-color .8s ease-out .1s; */
+    /* same as transition: background-color .5s ease-out .1s; */
     transition-property: background-color;
     transition-duration: .5s;
     transition-timing-function: ease-out;
@@ -31,21 +30,21 @@ nav:hover {
     padding-left: 20px;
     border-top-right-radius: 10px; border-bottom-right-radius: 10px;
     letter-spacing: 2px;
-    font-size: 1.05em;
-    line-height; 26px;
+    font-size: 1.1em;
+    line-height; 16px;
     text-shadow: 0px 2px 1px #aeaa18;
 }
 
 nav::after {
-    content:'';
+    content: '';
     display: block;
     width: 10px;
     height: 1000px;
-    background-color: #aeaa18;
+    background-color: #aeaa78;
     position: absolute;
     top: 0px;
-    left: -10px;
-    transition: left .5s;
+    left: -20px;
+    transition: left 1s;
 }
 
 nav:hover::after {
@@ -64,7 +63,7 @@ author, title, h1, h2, h3, h4, h5, h6 {
 body {
     font-family: Verdana, Geneva, Helvetica, sans-serif;
     font-size: 100%;
-    width: 65%;
+    width: 70%;
     margin-right: auto;
     margin-left: auto;
     border: 3px ridge #000;
@@ -74,8 +73,8 @@ body {
 }
 
 author {
-    font: 1.1em Helvetica, Verdana, Geneva, sans-serif;
-    margin-bottom: .3em;
+    font: 1.2em Helvetica, Verdana, Geneva, sans-serif;
+    margin-bottom: .35em;
 }
 
 h1 {
@@ -137,7 +136,7 @@ header h2 {
 }
 
 aside {
-    padding: 1em;
+    padding: 1.1em;
     background:rgb(83, 104, 138);
     color: white;
     margin-bottom: 1em;
