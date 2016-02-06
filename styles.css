@@ -17,9 +17,9 @@ nav {
     border: 1px solid rgba(255, 255, 255, .5);
     /* same as transition: background-color .8s ease-out .1s; */
     transition-property: background-color;
-    transition-duration: .8s;
+    transition-duration: .5s;
     transition-timing-function: ease-out;
-    transition-delay: .1s; 
+    transition-delay: .1s;
     position: relative;
     overflow: hidden;
 }
@@ -59,7 +59,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 author, title, h1, h2, h3, h4, h5, h6 {
     color: rgb(107, 107, 132);
-} 
+}
 
 body {
     font-family: Verdana, Geneva, Helvetica, sans-serif;
@@ -85,7 +85,7 @@ h1 {
 }
 
 h2 {
-    font: 3.5em Georgia, "Times New Roman", Times, serif;
+    font: 3em Georgia, "Times New Roman", Times, serif;
     margin-bottom: .2em;
 }
 
@@ -125,30 +125,6 @@ pre.wrong {
 
 pre.correct {
     border-left-color: green;
-}
-
-dt {
-    font-style: italic;
-    font-size:1.2em;
-}
-
-dd {
-    margin-bottom: 1.4em;
-}
-
-table {
-    margin-top: 1em;
-}
-
-caption {
-    margin: 0;
-    padding: 0;
-    margin-bottom: 1em;
-    text-align: left;
-}
-
-td, th {
-    padding: 10px;
 }
 
 .center {
@@ -197,7 +173,7 @@ blockquote {
 aside.languages {
     font: .8em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     background:#2e2e2e;
-    padding: 25px;
+    padding: 20px;
     padding-top: 1em;
     float: right;
     width: 500px;
@@ -242,7 +218,7 @@ aside.languages {
 }
 
 #tabs > ul > li:hover{
-    background: white; 
+    background: white;
     cursor:pointer;
 }
 
