@@ -20,7 +20,7 @@ void newLines(char out, ofstream &outFile) {
 
 void heading() { // print out the program's heading
     fillDisplay('=', 61);
-    cout << endl << "\t\t    ctc-C.tools ver. 1.5" << endl << endl
+    cout << endl << "\t\t    ctc-C.tools ver. 2.0" << endl << endl
         << "This program lets you construct pitch sets, rows or matrixes" << endl
         << "from input, then display them or outputs them to a file in" << endl
         << "the same directory. Please choose from the options below." << endl << endl
