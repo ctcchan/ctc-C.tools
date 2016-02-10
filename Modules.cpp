@@ -45,32 +45,6 @@ void menu() {    // print out the menu of programs
         << "13: Find all subsets of a given set" << endl << endl;
 }
 
-void programCalling(int m) { // execute sub-programs
-    bool valid;
-
-    if (!cin)    // if cin is in fail state, no need to go through switch statement
-        inputInvalid(valid);
-    else {
-        switch (m) { // choose from the menu and execute selected program
-            case 0: break;
-            case 1: randomRow(); break;
-            case 2: normalize(); break;
-            case 3: rowTable(); break;
-            case 4: matrix(); break;
-            case 5: matrixRotate(); break;
-            case 6: multiTable(1, 1); break; // range = 1 cancels the effect of the rotation
-            case 7: multiTable(1, 0); break;	// when range is 0, it lets the j + i take effect (rotation)
-            case 8: multiTable(-1, 1); break; // multiply by -1 to change sign of the table, thus making inversions
-            case 9: multiTable(-1, 0); break;
-            case 10: primeSet(); break;
-            case 11: primeTable(); break;
-            case 12: permuteTable(); break;
-            case 13: subsetsTable(); break;
-            default: inputInvalid(valid); // check if invalid, go back to menu
-        }
-    }
-}
-
 void programHeading(string program, int filling, char out, ofstream &outFile, string addString) { // print out the heading of the program
     fillDisplay('*', filling);
     cout << endl << program + addString << endl;    // add " (left)" or " (right)"
@@ -141,6 +115,32 @@ void primeReference() {  // reference to Larry Solomon's web site
     cout << "** Reference: Solomon, Larry. \"The Table of Pitch Class Sets.\" "
         << "In Larry Solomon, Musician & Scholar," << endl
         << "http://solomonsmusic.net/pcsets.htm (accessed November 7, 2015)." << endl;
+}
+
+void programCalling(int m) { // execute sub-programs
+    bool valid;
+
+    if (!cin)    // if cin is in fail state, no need to go through switch statement
+        inputInvalid(valid);
+    else {
+        switch (m) { // choose from the menu and execute selected program
+            case 0: break;
+            case 1: randomRow(); break;
+            case 2: normalize(); break;
+            case 3: rowTable(); break;
+            case 4: matrix(); break;
+            case 5: matrixRotate(); break;
+            case 6: multiTable(1, 1); break; // range = 1 cancels the effect of the rotation
+            case 7: multiTable(1, 0); break;	// when range is 0, it lets the j + i take effect (rotation)
+            case 8: multiTable(-1, 1); break; // multiply by -1 to change sign of the table, thus making inversions
+            case 9: multiTable(-1, 0); break;
+            case 10: primeSet(); break;
+            case 11: primeTable(); break;
+            case 12: permuteTable(); break;
+            case 13: subsetsTable(); break;
+            default: inputInvalid(valid); // check if invalid, go back to menu
+        }
+    }
 }
 
 int mod(int num, int sizeRange) {	// make sure pitch classes are in the range of sizeRange (default: 12)
