@@ -1,0 +1,34 @@
+About This Table
+
+These Prime Forms reinstate the inverses of Forte's primes. They occur in the table with "B" suffixed to set-name.
+
+Note that Allen Forte's "prime forms" are questionable as overly-reduced sets. As an example, 047, the major chord, does not appear in Forte's table, but is subsumed into 037, the minor chord. Thus, it becomes impossible to distinguish major from minor. This problem extends to all distinct pairs of set inverses. The dominant-seventh (0368), as another example, is subsumed into the half-diminished seventh (0258), making them indistinguishable. The above table retains all the original Forte set-names, but reinstates each inverse as the "B" form that is suffixed to the Forte name. Thus, these new primes are kept separate from their inverses. In no way does this subtract from the basic tenets of set theory, nor does it change Forte's foundational sets. Instead, it only adds more information -- information that was deleted by subsuming inverse sets under the same name. It also has the additional benefit of simplifying the determination of the prime form by elimination of the step that includes the inverse.
+
+It is maintained by some theorists that the reduction in the Forte primes is valid because of the "atonal" context for which set theory was designed; i.e., major and minor chords are the same in an "atonal" context. But, the term "atonal" is itself a questionable, and perhaps undefinable term, as is what constitutes "atonal music". Aside from the problem of defining "atonality," there are additional problems with this categorical excuse. Forte himself uses set theory to analyze Stravinsky's Rite of Spring and other at least marginally tonal music, such as in Scriabin's work. Major and minor chords are found in the Rite, and they are rendered indistinguishable by Forteian analysis. It is simply incorrect that these chords are heard as the same sonority in the Rite or in the music of Scriabin. This problem may even be exacerbated in the early "atonal" work of Schoenberg. Thus, all "set analysis" that unquestioningly follows Forte's model must itself be questioned.
+
+The above table salvages the problem by reinstating the inverse forms. The only other changes to Forte's original list (SAM, Appendix I) are additional symbols that enhance the informational content of the table. For example, the asterisk * identifies the set as a mirror, thus one that has no distinct inverse. Complements can still be identified (see the Key).
+
+Additions in this table, supplying even more information, are the descriptive or common names. Thus, when a set has a common name, such as dominant-seventh, it can easily be identified as such (as well as enharmonic equivalents). Scale names are also included when applicable. Some new "descriptive names" have been added that help to identify distinctive properties of a set. An example is 0347, the well-known superposed major-minor chord. It is tagged as the "major-minor tetramirror", which itself contains information about the nature of the chord: (1) that it is a 4-note chord (hence tetrachord), (2) that it is a mirror (symmetrical and having no distinct inverse), and (3) that it contains the major and minor chords.
+
+More information is provided with hexachords, where the symbol "comb" may be encountered. This is an abbreviation for "combinatorial". The structure of a hexachord determines whether it can form a combinatorial 12-note set with its complement. Note that the order of the notes within each hexachord has no effect on the property of hexachordal combinatoriality. Thus, its combinatoriality can be identified (see the Key).
+
+A new asset of this table is the exclusive use of single digit numbers for the prime form and the interval vector. This eliminates the need for commas, spaces, or other separators, resulting in a more elegant expression for each set. Hexadecimal notation is used. Thus, "10" is rendered as "A", "11" is rendered as "B", and "12" is C, rarely used in the last group of sets. It is worth the change because it makes it possible to express a set as a single line of numbers without separators; e.g., 02468A, the whole-tone scale. Other systems have been proposed, such as T for "10" and "E" for eleven, but these are Anglo-centric.
+
+Key
+
+symbol		meaning
+*		The set is a mirror (see Glossary).
+<		The set has a complement with the same name ending1
+(4)		(1) The set has only 4 different unique transpositions, as opposed to the normal 12.
+		(2) when occurring after "comb", indicates the transposition of comb when the set is in prime form.
+B		(at the end of a set-name) The set is the inverse of the set without the B and has the same IV.
+..15		This is a Z set whose counterpart (having the same IV) is ordinal number 15 of the same cardinality.
+		For hexachords this number also designates the set complement.
+comb  		This is a hexachord that is combinatorial.
+comb RI		This hexachord is combinatorial with RI (the number in parentheses indicates the transposition of
+		comb form when set is prime form)
+all-comb	The set is known as an all-combinatorial set (see Glossary).
+AAAA5		The last two sets in the table have their IVs designated in hexadecimal; A=10, B=11, C=12
+ 	 
+1. Normally, sets with B names have complements without the B ending and vice versa. 8-12<, however, has the complement 4-12, and 8-12B has the complement 4-12B.
+
