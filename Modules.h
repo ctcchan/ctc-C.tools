@@ -2,7 +2,6 @@
 #define MODULES_H_
 
 class Modules{
-    // move row to private section
     public:
         void programCalling(int m);
         int mod(int num, int rangeSize = 12);
