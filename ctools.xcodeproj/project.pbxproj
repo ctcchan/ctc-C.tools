@@ -11,6 +11,7 @@
 		7206BB931C6BF91D0051061C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7206BB891C6BF91D0051061C /* main.cpp */; };
 		7206BB951C6BF91D0051061C /* Modules.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7206BB8B1C6BF91D0051061C /* Modules.cpp */; };
 		7206BB961C6BF91D0051061C /* Programs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7206BB8D1C6BF91D0051061C /* Programs.cpp */; };
+		72A7E8571C6C0C5100D72768 /* Printer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 72A7E8551C6C0C5100D72768 /* Printer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,8 @@
 		7206BB8C1C6BF91D0051061C /* Modules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Modules.h; sourceTree = "<group>"; };
 		7206BB8D1C6BF91D0051061C /* Programs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Programs.cpp; sourceTree = "<group>"; };
 		7206BB8E1C6BF91D0051061C /* Programs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Programs.h; sourceTree = "<group>"; };
+		72A7E8551C6C0C5100D72768 /* Printer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Printer.cpp; sourceTree = "<group>"; };
+		72A7E8561C6C0C5100D72768 /* Printer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Printer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +69,8 @@
 		7206BB7E1C6BF8D50051061C /* ctools */ = {
 			isa = PBXGroup;
 			children = (
+				72A7E8551C6C0C5100D72768 /* Printer.cpp */,
+				72A7E8561C6C0C5100D72768 /* Printer.h */,
 				7206BB861C6BF91D0051061C /* GlobalVariables.cpp */,
 				7206BB871C6BF91D0051061C /* GlobalVariables.h */,
 				7206BB891C6BF91D0051061C /* main.cpp */,
@@ -133,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72A7E8571C6C0C5100D72768 /* Printer.cpp in Sources */,
 				7206BB931C6BF91D0051061C /* main.cpp in Sources */,
 				7206BB961C6BF91D0051061C /* Programs.cpp in Sources */,
 				7206BB951C6BF91D0051061C /* Modules.cpp in Sources */,

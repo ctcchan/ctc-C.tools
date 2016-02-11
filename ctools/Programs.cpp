@@ -4,10 +4,12 @@
 #include <ctime>
 
 #include "GlobalVariables.h"
+#include "Printer.h"
 #include "Modules.h"
 #include "Programs.h"
 
 void Programs::randomRow() {   // generate a row of random pitches
+    Printer print;
     Modules module;
     char choice;    // choice, 'y' or 'n'
     ofstream outputFile;    // output stream object
@@ -22,7 +24,7 @@ void Programs::randomRow() {   // generate a row of random pitches
     for (int i = 0; i < x; i++)  // populate array with random numbers from 0-11
         row[i] = rand() % 12;
 
-    module.programHeading("The Random Tone Row", 20, choice, outputFile);
+    print.programHeading("The Random Tone Row", 20, choice, outputFile);
 
     for (int i = 0; i < x; i++) {    // print out the random row
         cout << TABLE[row[i]] << " ";
@@ -30,13 +32,14 @@ void Programs::randomRow() {   // generate a row of random pitches
             outputFile << TABLE[row[i]] << " ";
     }
 
-    module.newLines(choice, outputFile);
+    print.newLines(choice, outputFile);
     outputFile << endl;
 
     outputFile.close();
 }
 
 void Programs::normalize() {   // allow input of any integers to create a tone row
+    Printer print;
     Modules module;
     char choice;    // choice, 'y' or 'n'
     ofstream outputFile;    // output stream object
@@ -49,7 +52,7 @@ void Programs::normalize() {   // allow input of any integers to create a tone r
     x = module.inputRowLength();
     module.inputRowNor(x, row);
 
-    module.programHeading("The Row", 8, choice, outputFile);
+    print.programHeading("The Row", 8, choice, outputFile);
 
     for (int i = 0; i < x; i++) { // print out the final row
         cout << TABLE[module.mod(row[i])] << " ";
@@ -58,13 +61,14 @@ void Programs::normalize() {   // allow input of any integers to create a tone r
             outputFile << TABLE[module.mod(row[i])] << " ";
     }
 
-    module.newLines(choice, outputFile);
+    print.newLines(choice, outputFile);
     outputFile << endl;
 
     outputFile.close();
 }
 
 void Programs::rowTable() {    // allow the use of a table other than the chromatic table
+    Printer print;
     Modules module;
     char choice;    // choice, 'y' or 'n'
     ofstream outputFile;    // output stream object
@@ -100,7 +104,7 @@ void Programs::rowTable() {    // allow the use of a table other than the chroma
         }
     } while (valid == false);
 
-    module.programHeading("The Row", 8, choice, outputFile);
+    print.programHeading("The Row", 8, choice, outputFile);
 
     for (int i = 0; i < x; i++) { // print out the row
         cout << TABLE[row[module.mod(row2[i])]] << " ";
@@ -109,13 +113,14 @@ void Programs::rowTable() {    // allow the use of a table other than the chroma
             outputFile << TABLE[row[module.mod(row2[i])]] << " ";
     }
 
-    module.newLines(choice, outputFile);
+    print.newLines(choice, outputFile);
     outputFile << endl;
 
     outputFile.close();
 }
 
 void Programs::matrix() {  // create a matrix
+    Printer print;
     Modules module;
     char choice;    // choice, 'y' or 'n'
     ofstream outputFile;    // output stream object
@@ -129,7 +134,7 @@ void Programs::matrix() {  // create a matrix
 
     module.transposition(tranTable, x, row);
 
-    module.programHeading("The Matrix", 11, choice, outputFile);
+    print.programHeading("The Matrix", 11, choice, outputFile);
 
     int tranTableMatrix[50];
     // initialize a different transposition to find the distance of each pitch from first pitch
@@ -147,7 +152,7 @@ void Programs::matrix() {  // create a matrix
         if (choice == 'y')
             outputFile << "I" + TABLE_NUM[tranTableMatrix[i]] << " ";
     }
-    module.newLines(choice, outputFile);
+    print.newLines(choice, outputFile);
 
     for (int i = 0; i < x; i++) {
         cout << "P" + TABLE_NUM[module.mod(12 - tranTableMatrix[i])] << "  ";    // print out P
@@ -166,7 +171,7 @@ void Programs::matrix() {  // create a matrix
         if (choice == 'y')
             outputFile << " R" + TABLE_NUM[module.mod(12 - tranTableMatrix[i])] << " ";
 
-        module.newLines(choice, outputFile);
+        print.newLines(choice, outputFile);
     }
 
     cout << "     "; // print out RI
@@ -178,13 +183,14 @@ void Programs::matrix() {  // create a matrix
             outputFile << "RI" + TABLE_NUM[tranTableMatrix[i]];
     }
 
-    module.newLines(choice, outputFile);
+    print.newLines(choice, outputFile);
     outputFile << endl;
 
     outputFile.close();
 }
 
 void Programs::matrixRotate() {  // matrix in rotation
+    Printer print;
     Modules module;
     char choice;    // choice, 'y' or 'n'
     ofstream outputFile;    // output stream object
@@ -200,7 +206,7 @@ void Programs::matrixRotate() {  // matrix in rotation
 
     int direction = module.rotationDirection();
 
-    module.programHeading("The Matrix in Rotation", (direction == 1) ? 31 : 30, choice, outputFile,
+    print.programHeading("The Matrix in Rotation", (direction == 1) ? 31 : 30, choice, outputFile,
             (direction == 1) ? " (right)" : " (left)");
 
     // print out the matrix table
@@ -216,7 +222,7 @@ void Programs::matrixRotate() {  // matrix in rotation
             if (choice == 'y')
                 outputFile << TABLE[row[module.mod(j + i * direction, x)]] << " ";
         }
-        module.newLines(choice, outputFile);
+        print.newLines(choice, outputFile);
     }
 
     if (choice == 'y')
@@ -226,6 +232,7 @@ void Programs::matrixRotate() {  // matrix in rotation
 }
 
 void Programs::multiTable(int sign, int range) {   // multiplications of various types, with inversion/in rotation by 1 index
+    Printer print;
     Modules module;
     char choice;    // choice, 'y' or 'n'
     ofstream outputFile;    // output stream object
@@ -248,7 +255,7 @@ void Programs::multiTable(int sign, int range) {   // multiplications of various
     if (range == 0)  // only execute if range = 0 (rotation)
         direction = module.rotationDirection();
 
-    module.programHeading(sign, range, direction, x, y, row, row2, choice, outputFile, (direction == 1) ? " (right)" : " (left)");
+    print.programHeading(sign, range, direction, x, y, row, row2, choice, outputFile, (direction == 1) ? " (right)" : " (left)");
 
     for (int i = 0; i < y; i++) { // print out the multiplication table
         for (int j = 0; j < x; j++)
@@ -264,7 +271,7 @@ void Programs::multiTable(int sign, int range) {   // multiplications of various
             if (choice == 'y')
                 outputFile << TABLE[row[module.mod(j + (i - i * range) * direction, x + range * 12)]] << " ";
         }
-        module.newLines(choice, outputFile);
+        print.newLines(choice, outputFile);
     }
     if (choice == 'y')
         outputFile << endl;
@@ -273,6 +280,7 @@ void Programs::multiTable(int sign, int range) {   // multiplications of various
 }
 
 void Programs::primeSet() {
+    Printer print;
     Modules module;
     char choice;    // choice, 'y' or 'n'
     ofstream outputFile;    // output stream object
@@ -386,7 +394,7 @@ void Programs::primeSet() {
             (sumArr[i] <= sumArr[position] ? i : position) : position;
     }
     */
-    module.programHeading(x, row, choice, outputFile);
+    print.programHeading(x, row, choice, outputFile);
     /*
         for(int i = 0; i < x * 4; i++) { // print out all the sets for checking
             for(int j = 0; j < x; j++) {
@@ -417,7 +425,7 @@ void Programs::primeSet() {
                 outputFile << multiRow[position][i] << ")";
         }
     }
-    module.newLines(choice, outputFile);
+    print.newLines(choice, outputFile);
 
     int invertedPrime[12]; // find the inversion of the prime set
     for (int i = 0; i < x; i++) // inverse the prime set
@@ -478,7 +486,7 @@ void Programs::primeSet() {
         if (choice == 'y')
             outputFile << endl;
 
-        module.primeReference();
+        print.primeReference();
         cout << endl;
     }
 
@@ -508,7 +516,7 @@ void Programs::primeSet() {
                             cout << description << endl;
                         }
                         cout << endl;
-                        module.primeReference();
+                        print.primeReference();
                     }
                     break;
                 case 'n':
@@ -525,7 +533,7 @@ void Programs::primeSet() {
 }
 
 void Programs::primeTable() {  // print out the table of pitch class sets by Larry Solomon
-    Modules module;
+    Printer print;
     ifstream inFile, inFile2;
     inFile.open("setTable.txt");
     inFile2.open("setTableDescription.txt");
@@ -558,7 +566,7 @@ void Programs::primeTable() {  // print out the table of pitch class sets by Lar
     }
 
     if (finish == true) {
-        module.primeReference();
+        print.primeReference();
         cout << endl;
     }
 
@@ -567,6 +575,7 @@ void Programs::primeTable() {  // print out the table of pitch class sets by Lar
 }
 
 void Programs::permuteTable() {	// find all permutations of a given set
+    Printer print;
     Modules module;
     char choice;    // choice, 'y' or 'n'
     ofstream outputFile;    // output stream object
@@ -581,7 +590,7 @@ void Programs::permuteTable() {	// find all permutations of a given set
     for (int i = 0; i < x; i++)
         stringTable += module.intToString(row[i]);
 
-    module.programHeading("The Permutation Table", 22, choice, outputFile);
+    print.programHeading("The Permutation Table", 22, choice, outputFile);
 
     module.permute("", stringTable, x, choice, outputFile);
 
@@ -593,6 +602,7 @@ void Programs::permuteTable() {	// find all permutations of a given set
 }
 
 void Programs::subsetsTable() {	// find all subsets of a given set
+    Printer print;
     Modules module;
     char choice;    // choice, 'y' or 'n'
     ofstream outputFile;    // output stream object
@@ -607,7 +617,7 @@ void Programs::subsetsTable() {	// find all subsets of a given set
     for (int i = 0; i < x; i++)
         stringTable += module.intToString(row[i]);
 
-    module.programHeading("All Subsets", 12, choice, outputFile);
+    print.programHeading("All Subsets", 12, choice, outputFile);
 
     module.subsets("", stringTable, choice, outputFile);
 

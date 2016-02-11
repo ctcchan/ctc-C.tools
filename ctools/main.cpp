@@ -1,11 +1,13 @@
 #include <iostream>
 
 #include "GlobalVariables.h"
+#include "Printer.h"
 #include "Modules.h"
 
 int main() {
     Modules module;
-    module.heading();
+    Printer print;
+    print.heading();
 
     const int NUMBER_OF_PROGRAMS = 13;   // number of sub-programs that can be called
     int menuChoice;
@@ -13,7 +15,7 @@ int main() {
 
     do {
         valid = true;   // initialize valid to be true;
-        module.menu(); // print out menu
+        print.menu(); // print out menu
         cin >> menuChoice;
         cout << endl;
         module.programCalling(menuChoice); // call programs
