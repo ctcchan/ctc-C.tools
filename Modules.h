@@ -1,7 +1,7 @@
 #ifndef MODULES_H_
 #define MODULES_H_
 
-class Modules{
+class Modules {
     public:
         void programCalling(int m);
         int mod(int num, int rangeSize = 12);

@@ -4,7 +4,7 @@
 #include <fstream>
 #include "GlobalVariables.h"
 
-class Printer{
+class Printer {
     public:
         void fillDisplay(char s, int num);
         void newLines(char out, ofstream &outFile);
