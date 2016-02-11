@@ -3,8 +3,8 @@
 
 #include "Printer.h"
 
-void Printer::fillDisplay(char sym, int num) {    // fill the display with user-defined characters
-    cout << '\n' << setfill(sym) << setw(num) << '\n';
+void Printer::fillDisplay(char s, int num) {    // fill the display with user-defined characters
+    cout << '\n' << setfill(s) << setw(num) << '\n';
 }
 
 void Printer::newLines(char out, ofstream &outFile) {

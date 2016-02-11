@@ -6,7 +6,7 @@
 
 class Printer{
     public:
-        void fillDisplay(char sym, int num);
+        void fillDisplay(char s, int num);
         void newLines(char out, ofstream &outFile);
         void heading();
         void menu();

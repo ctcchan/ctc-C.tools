@@ -5,8 +5,8 @@
 #include "Modules.h"
 
 int main() {
-    Modules module;
     Printer print;
+    Modules module;
     print.heading();
 
     const int NUMBER_OF_PROGRAMS = 13;   // number of sub-programs that can be called
