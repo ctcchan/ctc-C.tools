@@ -5,10 +5,11 @@
 #include <ctime>
 
 #include "GlobalVariables.h"
+#include "Printer.h"
 #include "Modules.h"
 #include "Programs.h"
 
-void Modules::programCalling(int m) { // execute sub-programs
+void Modules::programCalling(Printer p, Modules &mo, int m) { // execute sub-programs
     Programs program;
     bool valid;
 
@@ -17,19 +18,19 @@ void Modules::programCalling(int m) { // execute sub-programs
     else {
         switch (m) { // choose from the menu and execute selected program
             case 0: break;
-            case 1: program.randomRow(); break;
-            case 2: program.normalize(); break;
-            case 3: program.rowTable(); break;
-            case 4: program.matrix(); break;
-            case 5: program.matrixRotate(); break;
-            case 6: program.multiTable(1, 1); break; // range = 1 cancels the effect of the rotation
-            case 7: program.multiTable(1, 0); break;	// when range is 0, it lets the j + i take effect (rotation)
-            case 8: program.multiTable(-1, 1); break; // multiply by -1 to change sign of the table, thus making inversions
-            case 9: program.multiTable(-1, 0); break;
-            case 10: program.primeSet(); break;
-            case 11: program.primeTable(); break;
-            case 12: program.permuteTable(); break;
-            case 13: program.subsetsTable(); break;
+            case 1: program.randomRow(p, mo); break;
+            case 2: program.normalize(p, mo); break;
+            case 3: program.rowTable(p, mo); break;
+            case 4: program.matrix(p, mo); break;
+            case 5: program.matrixRotate(p, mo); break;
+            case 6: program.multiTable(p, mo, 1, 1); break; // range = 1 cancels the effect of the rotation
+            case 7: program.multiTable(p, mo, 1, 0); break;	// when range is 0, it lets the j + i take effect (rotation)
+            case 8: program.multiTable(p, mo, -1, 1); break; // multiply by -1 to change sign of the table, thus making inversions
+            case 9: program.multiTable(p, mo, -1, 0); break;
+            case 10: program.primeSet(p, mo); break;
+            case 11: program.primeTable(p); break;
+            case 12: program.permuteTable(p, mo); break;
+            case 13: program.subsetsTable(p, mo); break;
             default: inputInvalid(valid); // check if invalid, go back to menu
         }
     }

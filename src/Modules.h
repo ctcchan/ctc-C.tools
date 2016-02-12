@@ -3,7 +3,7 @@
 
 class Modules {
     public:
-        void programCalling(int m);
+        void programCalling(Printer print, Modules &module, int m);
         int mod(int num, int rangeSize = 12);
         //int modRecur(int num, int rangeSize = 12);
         void swap(int &a, int &b);
