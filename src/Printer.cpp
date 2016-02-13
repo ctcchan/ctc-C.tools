@@ -2,6 +2,7 @@
 #include <iomanip>
 
 #include "Printer.h"
+#include "Modules.h"
 
 void Printer::fillDisplay(char s, int num) {    // fill the display with user-defined characters
     cout << '\n' << setfill(s) << setw(num) << '\n';
@@ -51,7 +52,9 @@ void Printer::programHeading(string program, int filling, char out, ofstream &ou
 }
 
 // overloaded function to print out multiplication programs' heading
-void Printer::programHeading(int s, int r, int d, int arrSize, int arrSize2, int r1[50], int r2[50], char out, ofstream &outFile, string addString) {
+void Printer::programHeading(int s, int r, int d, char out, ofstream &outFile, string addString) {
+    Modules module;
+    
     if (d == 1) d = 8;   //  " (right)" has 8 characters
     else if (d == -1) d = 7; // " (left)" has 7 characters
     else d = 0;
@@ -83,16 +86,18 @@ void Printer::programHeading(int s, int r, int d, int arrSize, int arrSize2, int
             outFile << "The Multiplication Table";
         outFile << endl;
 
-        for (int i = 0; i < arrSize; i++)
-            outFile << TABLE[r1[i]] << " ";
+        for (int i = 0; i < module.getRowSize(1); i++)
+            outFile << TABLE[module.getRow(i, 1)] << " ";
         outFile << " x   ";
-        for (int i = 0; i < arrSize2; i++)
-            outFile << TABLE[r2[i]] << " ";
+        for (int i = 0; i < module.getRowSize(2); i++)
+            outFile << TABLE[module.getRow(i, 2)] << " ";
         outFile << endl << endl;
     }
 }
 
-void Printer::programHeading(int arrSize, int r[50], char out, ofstream &outFile) {  // overloaded function to print out prime set's heading
+void Printer::programHeading(char out, ofstream &outFile) {  // overloaded function to print out prime set's heading
+    Modules module;
+    
     fillDisplay('*', 14);
     cout << endl << "The Prime Set" << endl;
     fillDisplay('*', 14);
@@ -101,8 +106,8 @@ void Printer::programHeading(int arrSize, int r[50], char out, ofstream &outFile
     if (out == 'y')
         outFile << "The Prime Set" << endl;
 
-    for (int i = 0; i < arrSize; i++)
-        outFile << TABLE[r[i]] << " ";
+    for (int i = 0; i < module.getRowSize(1); i++)
+        outFile << TABLE[module.getRow(i, 1)] << " ";
     outFile << endl << endl;
 }
 

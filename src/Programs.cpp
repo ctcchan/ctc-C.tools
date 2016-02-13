@@ -13,21 +13,18 @@ void Programs::randomRow(Printer print, Modules &module) {   // generate a row o
     ofstream outputFile;    // output stream object
     module.outputting(choice, outputFile);
 
-    int x;	// size of row
-    int row[10000];	// the row
-
     cout << endl;
-    x = module.inputRowLength(10000);
+    module.inputRowLength(3, 10000, "");
     srand(unsigned(time(NULL)));
-    for (int i = 0; i < x; i++)  // populate array with random numbers from 0-11
-        row[i] = rand() % 12;
+    for (int i = 0; i < module.getRowSize(1); i++) // populate array with random numbers from 0-11
+        module.setRow(i, rand() % 12, 3);
 
     print.programHeading("The Random Tone Row", 20, choice, outputFile);
 
-    for (int i = 0; i < x; i++) {    // print out the random row
-        cout << TABLE[row[i]] << " ";
+    for (int i = 0; i < module.getRowSize(1); i++) {    // print out the random row
+        cout << TABLE[module.getRow(i, 3)] << " ";
         if (choice == 'y')
-            outputFile << TABLE[row[i]] << " ";
+            outputFile << TABLE[module.getRow(i, 3)] << " ";
     }
 
     print.newLines(choice, outputFile);
@@ -41,20 +38,18 @@ void Programs::normalize(Printer print, Modules &module) {   // allow input of a
     ofstream outputFile;    // output stream object
     module.outputting(choice, outputFile);
 
-    int x;	// size of row
-    int row[50];	// the row
-
     cout << endl;
-    x = module.inputRowLength();
-    module.inputRowNor(x, row);
+    module.inputRowLength(1);
+    module.inputRowNor();
+    cout << endl;
 
     print.programHeading("The Row", 8, choice, outputFile);
 
-    for (int i = 0; i < x; i++) { // print out the final row
-        cout << TABLE[module.mod(row[i])] << " ";
+    for (int i = 0; i < module.getRowSize(1); i++) { // print out the final row
+        cout << TABLE[module.mod(module.getRow(i, 1))] << " ";
         // look up from the table and translate pitch numbers to pitch names
         if (choice == 'y')
-            outputFile << TABLE[module.mod(row[i])] << " ";
+            outputFile << TABLE[module.mod(module.getRow(i, 1))] << " ";
     }
 
     print.newLines(choice, outputFile);
@@ -68,13 +63,10 @@ void Programs::rowTable(Printer print, Modules &module) {    // allow the use of
     ofstream outputFile;    // output stream object
     module.outputting(choice, outputFile);
 
-    int x = 12;	// size of row
-    int row[50], row2[50];	// the row
-
     char answer;
     bool valid; //input valid check
 
-    module.populateRow(true, x, row, "Enter a twelve-tone row in pitches or numbers to create a reference table: ");
+    module.populateRow(true, 1, "Enter a twelve-tone row in pitches or numbers to create a reference table: ");
 
     do {
         valid = true;
@@ -86,11 +78,11 @@ void Programs::rowTable(Printer print, Modules &module) {    // allow the use of
         else {
             switch (answer) {
                 case 'y':   // if 'y', the row equals the table
-                    for (int i = 0; i < x; i++)
-                        row2[i] = row[i];
+                    for (int i = 0; i < module.getRowSize(1); i++)
+                        module.setRow(i, module.getRow(i, 1), 2);
                     break;
                 case 'n':   // if 'n', enter a new row
-                    module.populateRow(true, x, row2, "Enter your twelve-tone row in pitches or numbers to map to the reference table: ");
+                    module.populateRow(true, 2, "Enter your twelve-tone row in pitches or numbers to map to the reference table: ");
                     break;
                 default:
                     module.inputInvalid(valid);
@@ -100,11 +92,11 @@ void Programs::rowTable(Printer print, Modules &module) {    // allow the use of
 
     print.programHeading("The Row", 8, choice, outputFile);
 
-    for (int i = 0; i < x; i++) { // print out the row
-        cout << TABLE[row[module.mod(row2[i])]] << " ";
+    for (int i = 0; i < module.getRowSize(1); i++) { // print out the row
+        cout << TABLE[module.getRow(module.mod(module.getRow(i, 2)), 1)] << " ";
         // look up from the table (row[i]) and translate pitch numbers to pitch names
         if (choice == 'y')
-            outputFile << TABLE[row[module.mod(row2[i])]] << " ";
+            outputFile << TABLE[module.getRow(module.mod(module.getRow(i, 2)), 1)]  << " ";
     }
 
     print.newLines(choice, outputFile);
@@ -118,20 +110,16 @@ void Programs::matrix(Printer print, Modules &module) {  // create a matrix
     ofstream outputFile;    // output stream object
     module.outputting(choice, outputFile);
 
-    int x;	// size of row
-    int row[50];	// the row
-    int tranTable[50];	// the transposition table
+    module.populateRow(false, 1, "Please enter your row: ");
 
-    module.populateRow(false, x, row, "Please enter your row: ");
-
-    module.transposition(tranTable, x, row);
+    module.transposition(1);
 
     print.programHeading("The Matrix", 11, choice, outputFile);
 
     int tranTableMatrix[50];
     // initialize a different transposition to find the distance of each pitch from first pitch
-    for (int i = 0; i < x; i++)
-        tranTableMatrix[i] = module.mod(row[i] - row[0]);
+    for (int i = 0; i < module.getRowSize(1); i++)
+        tranTableMatrix[i] = module.mod(module.getRow(i, 1) - module.getRow(0, 1));
 
     // print out the matrix table
     const string TABLE_NUM[12] = { "0 ", "1 ", "2 ", "3 ", "4 ", "5 ",
@@ -139,24 +127,24 @@ void Programs::matrix(Printer print, Modules &module) {  // create a matrix
     cout << "     "; // print out I
     if (choice == 'y')
         outputFile << "     ";
-    for (int i = 0; i < x; i++) {
+    for (int i = 0; i < module.getRowSize(1); i++) {
         cout << "I" + TABLE_NUM[tranTableMatrix[i]] << " ";
         if (choice == 'y')
             outputFile << "I" + TABLE_NUM[tranTableMatrix[i]] << " ";
     }
     print.newLines(choice, outputFile);
 
-    for (int i = 0; i < x; i++) {
+    for (int i = 0; i < module.getRowSize(1); i++) {
         cout << "P" + TABLE_NUM[module.mod(12 - tranTableMatrix[i])] << "  ";    // print out P
         if (choice == 'y')
             outputFile << "P" + TABLE_NUM[module.mod(12 - tranTableMatrix[i])] << "  ";
 
-        for (int j = 0; j < x; j++) { // print body of matrix
-            row[j] = module.mod(row[j] - tranTable[i]); // minus to get transpositions of inversions
-            cout << TABLE[row[j]] << " ";
+        for (int j = 0; j < module.getRowSize(1); j++) { // print body of matrix
+            module.setRow(j, module.mod(module.getRow(j, 1) - module.getRow(i, 4)), 1); // minus to get transpositions of inversions
+            cout << TABLE[module.getRow(j, 1)] << " ";
             // look up from the table and translate pitch numbers to pitch names
             if (choice == 'y')
-                outputFile << TABLE[row[j]] << " ";
+                outputFile << TABLE[module.getRow(j, 1)] << " ";
         }
 
         cout << " R" + TABLE_NUM[module.mod(12 - tranTableMatrix[i])] << " ";    // print out R
@@ -169,7 +157,7 @@ void Programs::matrix(Printer print, Modules &module) {  // create a matrix
     cout << "     "; // print out RI
     if (choice == 'y')
         outputFile << "     ";
-    for (int i = 0; i < x; i++) {
+    for (int i = 0; i < module.getRowSize(1); i++) {
         cout << "RI" + TABLE_NUM[tranTableMatrix[i]];
         if (choice == 'y')
             outputFile << "RI" + TABLE_NUM[tranTableMatrix[i]];
@@ -186,31 +174,26 @@ void Programs::matrixRotate(Printer print, Modules &module) {  // matrix in rota
     ofstream outputFile;    // output stream object
     module.outputting(choice, outputFile);
 
-    int x;	// size of row
-    int row[50];	// the row
-    int tranTable[50];	// the transposition table
+    module.populateRow(false, 1, "Please enter your row: ");
 
-    module.populateRow(false, x, row, "Please enter your row: ");
-
-    module.transposition(tranTable, x, row);
+    module.transposition(1);
 
     int direction = module.rotationDirection();
 
-    print.programHeading("The Matrix in Rotation", (direction == 1) ? 31 : 30, choice, outputFile,
-            (direction == 1) ? " (right)" : " (left)");
+    print.programHeading("The Matrix in Rotation", (direction == 1) ? 31 : 30, choice, outputFile, (direction == 1) ? " (right)" : " (left)");
 
     // print out the matrix table
-    for (int i = 0; i < x; i++) {
-        for (int j = 0; j < x; j++)
-            row[j] = module.mod(row[j] - tranTable[i]); // minus to get transpositions of inversions
-        for (int j = 0; j < x; j++) {
-            cout << TABLE[row[module.mod(j + i * direction, x)]] << " ";
+    for (int i = 0; i < module.getRowSize(1); i++) {
+        for (int j = 0; j < module.getRowSize(1); j++)
+            module.setRow(j, module.mod(module.getRow(j, 1) - module.getRow(i, 4)), 1); // minus to get transpositions of inversions
+        for (int j = 0; j < module.getRowSize(1); j++) {
+            cout << TABLE[module.getRow(module.mod(j + i * direction, module.getRowSize(1)), 1)] << " ";
             // look up from the table and translate pitch numbers to pitch names
             // j + i prints the rows in rotation, moving (rotating to right) in the value of i
             // if direction is -1, it rotates to left in the value of i
             // x prevents the row from going over the length of the original row
             if (choice == 'y')
-                outputFile << TABLE[row[module.mod(j + i * direction, x)]] << " ";
+                outputFile << TABLE[module.getRow(module.mod(j + i * direction, module.getRowSize(1)), 1)] << " ";
         }
         print.newLines(choice, outputFile);
     }
@@ -226,30 +209,26 @@ void Programs::multiTable(Printer print, Modules &module, int sign, int range) {
     ofstream outputFile;    // output stream object
     module.outputting(choice, outputFile);
 
-    int x, y;	// sizes of rows
-    int row[50], row2[50];	// the rows
-    int tranTable[50];	// the transposition table
-
     cout << endl;
-    x = module.inputRowLength(50, "1st ");
-    module.inputRow(x, row, "1st ");
+    module.inputRowLength(1, 50, "1st ");
+    module.inputRow(1, "1st ");
     cout << endl;
-    y = module.inputRowLength(50, "2nd ");
-    module.inputRow(y, row2, "2nd ");
+    module.inputRowLength(2, 50, "2nd ");
+    module.inputRow(2, "2nd ");
 
-    module.transposition(tranTable, x, row2);
+    module.transposition(2);
 
     int direction = 0;
     if (range == 0)  // only execute if range = 0 (rotation)
         direction = module.rotationDirection();
 
-    print.programHeading(sign, range, direction, x, y, row, row2, choice, outputFile, (direction == 1) ? " (right)" : " (left)");
+    print.programHeading(sign, range, direction, choice, outputFile, (direction == 1) ? " (right)" : " (left)");
 
-    for (int i = 0; i < y; i++) { // print out the multiplication table
-        for (int j = 0; j < x; j++)
-            row[j] = module.mod(row[j] + tranTable[i] * sign); // plus or minus to transpositions of row2[i]
-        for (int j = 0; j < x; j++) {
-            cout << TABLE[row[module.mod(j + (i - i * range) * direction, x + range * 12)]] << " ";
+    for (int i = 0; i < module.getRowSize(2); i++) { // print out the multiplication table
+        for (int j = 0; j < module.getRowSize(1); j++)
+            module.setRow(j, module.mod(module.getRow(j, 1) + module.getRow(i, 4) * sign), 1); // plus or minus to transpositions of row2[i]
+        for (int j = 0; j < module.getRowSize(1); j++) {
+            cout << TABLE[module.getRow(module.mod(j + (i - i * range) * direction, module.getRowSize(1) + range * 12), 1)] << " ";
             // look up from the table and translate pitch numbers to pitch names
             // j + i prints the rows in rotation, moving (rotating to right) in the value of i
             // if direction is -1, it rotates to left in the value of i
@@ -257,7 +236,7 @@ void Programs::multiTable(Printer print, Modules &module, int sign, int range) {
             // when range is 1, it cancels the rotation by subtraction, and set the limit larger than 12
             // when it is 0, it sets the range to x, thus rotation (j + i, x)
             if (choice == 'y')
-                outputFile << TABLE[row[module.mod(j + (i - i * range) * direction, x + range * 12)]] << " ";
+                outputFile << TABLE[module.getRow(module.mod(j + (i - i * range) * direction, module.getRowSize(1) + range * 12), 1)] << " ";
         }
         print.newLines(choice, outputFile);
     }
@@ -272,37 +251,35 @@ void Programs::primeSet(Printer print, Modules &module) {
     ofstream outputFile;    // output stream object
     module.outputting(choice, outputFile);
 
-    int x;	// size of row
-    int row[12];	// the row
-
     cout << endl;
-    x = module.inputRowLength(12);
-    module.inputRow(x, row);
+    module.inputRowLength(1, 12, "");
+    module.inputRow(5);
+    cout << endl;
 
-    module.insertionSort(x, row);   // insertion sort of row[i]
+    module.insertionSort(); // insertion sort of row[i]
 
-    int multiRow[48][48]; // initialize a large 2-D array as a grid
-    for (int i = 0; i < x; i++) { //populate the 2-D array with all transpositions of normal sets
-        for (int j = 0; j < x; j++) {
-            multiRow[i][j] = module.mod(row[j] - row[i]);
-            multiRow[i + x][j] = module.mod(row[j] - (12 - row[i]));
-            multiRow[i + x * 2][j] = module.mod(12 - row[j] - row[i]);
-            multiRow[i + x * 3][j] = module.mod(row[i] - row[j]);
+    // initialize a large 2-D array as a grid
+    for (int i = 0; i < module.getRowSize(1); i++) { //populate the 2-D array with all transpositions of normal sets
+        for (int j = 0; j < module.getRowSize(1); j++) {
+            module.setMultiRow(i, j, module.mod(module.getRow(j, 5) - module.getRow(i, 5)));
+            module.setMultiRow(i + module.getRowSize(1), j, module.mod(module.getRow(j, 5) - (12 - module.getRow(i, 5))));
+            module.setMultiRow(i + module.getRowSize(1) * 2, j, module.mod(12 - module.getRow(j, 5) - module.getRow(i, 5)));
+            module.setMultiRow(i + module.getRowSize(1) * 3, j, module.mod(module.getRow(i, 5) - module.getRow(j, 5)));
         }
     }
 
     int smallest;
-    for (int i = 0; i < x * 4; i++) { // reduce the normal sets to start at pitch 0
+    for (int i = 0; i < module.getRowSize(1) * 4; i++) { // reduce the normal sets to start at pitch 0
         smallest = 12;  // initialize smallest every times it loops back
-        for (int j = 0; j < x; j++)
+        for (int j = 0; j < module.getRowSize(1); j++)
             // find smallest
-            smallest = (multiRow[i][j] < smallest) ? multiRow[i][j] : smallest;
-        for (int j = 0; j < x; j++)
+            smallest = (module.getMultiRow(i, j) < smallest) ? module.getMultiRow(i, j) : smallest;
+        for (int j = 0; j < module.getRowSize(1); j++)
             // subtract smallest from rows
-            multiRow[i][j] -= smallest;
+            module.setMultiRow(i, j, module.getMultiRow(i, j) - smallest);
     }
 
-    module.insertionSortMulti(x, multiRow);   // insertion sort of all normal sets
+    module.insertionSortMulti();    // insertion sort of all normal sets
 
     int position = 0;
     /*
@@ -325,32 +302,32 @@ void Programs::primeSet(Printer print, Modules &module) {
     int posArr[48];   // store the smallest numbers from each column
     smallest = 12;
     // find smallest pitch on last column of all rows
-    for (int i = 0; i < x * 4; i++)
-        smallest = (multiRow[i][x - 1] < smallest) ? multiRow[i][x - 1] : smallest;
+    for (int i = 0; i < module.getRowSize(1) * 4; i++)
+        smallest = (module.getMultiRow(i, module.getRowSize(1) - 1) < smallest) ? module.getMultiRow(i, module.getRowSize(1) - 1) : smallest;
     // store the positions where the smallest outer pitch occurs
     // if the position's value is not the smallest, store -1
-    for (int i = 0; i < x * 4; i++)
-        posArr[i] = (multiRow[i][x - 1] == smallest) ? i : -1;
+    for (int i = 0; i < module.getRowSize(1) * 4; i++)
+        posArr[i] = (module.getMultiRow(i, module.getRowSize(1) - 1) == smallest) ? i : -1;
 
     int column = 1; // start the above process again on second pitch
-    while (column < x - 1) {
+    while (column < module.getRowSize(1) - 1) {
         smallest = 12;  // initialize smallest to 12 every time
         // find smallest pitch on each column
-        for (int i = 0; i < x * 4; i++) {
+        for (int i = 0; module.getRowSize(1) * 4; i++) {
             if (posArr[i] >= 0)  // only check posArr[i] that are positive
-                smallest = (multiRow[posArr[i]][column] < smallest) ? multiRow[posArr[i]][column] : smallest;
+                smallest = (module.getMultiRow(posArr[i], column) < smallest) ? module.getMultiRow(posArr[i], column) : smallest;
         }
         // store the positions where the smallest 2nd pitch occurs
         // when the loop comes back, it finds smallest 3rd pitch, etc, but only on positions
         // where the PREVIOUS pitch is smallest
-        for (int i = 0; i < x * 4; i++) {
+        for (int i = 0; i < module.getRowSize(1) * 4; i++) {
             if (posArr[i] >= 0)  // only check posArr[i] that are positive
-                posArr[i] = (multiRow[posArr[i]][column] == smallest) ? i : -1;
+                posArr[i] = (module.getMultiRow(posArr[i], column) == smallest) ? i : -1;
         }
         column++;
     }
 
-    for (int i = 0; i < x * 4; i++) { // find the final position
+    for (int i = 0; i < module.getRowSize(1) * 4; i++) { // find the final position
         if (posArr[i] >= 0)  // the list should consist of all -1 except for one, which stores the final position
             position = posArr[i];
     }
@@ -380,7 +357,7 @@ void Programs::primeSet(Printer print, Modules &module) {
             (sumArr[i] <= sumArr[position] ? i : position) : position;
     }
     */
-    print.programHeading(x, row, choice, outputFile);
+    print.programHeading(choice, outputFile);
     /*
         for(int i = 0; i < x * 4; i++) { // print out all the sets for checking
             for(int j = 0; j < x; j++) {
@@ -394,36 +371,42 @@ void Programs::primeSet(Printer print, Modules &module) {
         }
     */
 
-    for (int i = 0; i < x; i++) { // print out the prime set (multiRow[position][i] only consist of integers)
+    for (int i = 0; i < module.getRowSize(1); i++) { // print out the prime set (multiRow[position][i] only consist of integers)
         if (i == 0) {
-            cout << "(" << multiRow[position][i] << ", ";
+            cout << "(" << module.getMultiRow(position, i) << ", ";
             if (choice == 'y')
-                outputFile << "(" << multiRow[position][i] << ", ";
+                outputFile << "(" << module.getMultiRow(position, i) << ", ";
         }
-        else if (i < x - 1) {
-            cout << multiRow[position][i] << ", ";
+        else if (i < module.getRowSize(1) - 1) {
+            cout << module.getMultiRow(position, i) << ", ";
             if (choice == 'y')
-                outputFile << multiRow[position][i] << ", ";
+                outputFile << module.getMultiRow(position, i) << ", ";
         }
         else {
-            cout << multiRow[position][i] << ")";
+            cout << module.getMultiRow(position, i) << ")";
             if (choice == 'y')
-                outputFile << multiRow[position][i] << ")";
+                outputFile << module.getMultiRow(position, i) << ")";
         }
     }
     print.newLines(choice, outputFile);
 
     int invertedPrime[12]; // find the inversion of the prime set
-    for (int i = 0; i < x; i++) // inverse the prime set
-        invertedPrime[i] = multiRow[position][x - 1] - multiRow[position][i];
+    for (int i = 0; i < module.getRowSize(1); i++) // inverse the prime set
+        invertedPrime[i] = module.getMultiRow(position, module.getRowSize(1) - 1) - module.getMultiRow(position, i);
 
-    module.insertionSort(x, invertedPrime);   // insertion sort of invertedPrime[i]
+    for (int i = 0; i < module.getRowSize(1); i++) { // insertion sort of invertedPrime[i]
+        int j = i;
+        while (j > 0 && invertedPrime[j] < invertedPrime[j - 1]) {
+            module.swap(invertedPrime[j], invertedPrime[j - 1]);
+            j--;
+        }
+    }
 
     // convert prime sets from integer arrays into single strings
     string primeString = "";
     string invertedPrimeString = "";
-    for (int i = 0; i < x; i++) {
-        primeString += module.intToString(multiRow[position][i]);
+    for (int i = 0; i < module.getRowSize(1); i++) {
+        primeString += module.intToString(module.getMultiRow(position, i));
         invertedPrimeString += module.intToString(invertedPrime[i]);
     }
 
@@ -564,18 +547,15 @@ void Programs::permuteTable(Printer print, Modules &module) {	// find all permut
     ofstream outputFile;    // output stream object
     module.outputting(choice, outputFile);
 
-    int x;	// size of row
-    int row[50];	// the row
-
-    module.populateRow(false, x, row, "Please enter your row: ");
+    module.populateRow(false, 1, "Please enter your row: ");
 
     string stringTable = "";
-    for (int i = 0; i < x; i++)
-        stringTable += module.intToString(row[i]);
+    for (int i = 0; i < module.getRowSize(1); i++)
+        stringTable += module.intToString(module.getRow(i, 1));
 
     print.programHeading("The Permutation Table", 22, choice, outputFile);
 
-    module.permute("", stringTable, x, choice, outputFile);
+    module.permute("", stringTable, module.getRowSize(1), choice, outputFile);
 
     cout << endl;
     if (choice == 'y')
@@ -589,14 +569,11 @@ void Programs::subsetsTable(Printer print, Modules &module) {	// find all subset
     ofstream outputFile;    // output stream object
     module.outputting(choice, outputFile);
 
-    int x;	// size of row
-    int row[50];	// the row
-
-    module.populateRow(false, x, row, "Please enter your row: ");
+    module.populateRow(false, 1, "Please enter your row: ");
 
     string stringTable = "";
-    for (int i = 0; i < x; i++)
-        stringTable += module.intToString(row[i]);
+    for (int i = 0; i < module.getRowSize(1); i++)
+        stringTable += module.intToString(module.getRow(i, 1));
 
     print.programHeading("All Subsets", 12, choice, outputFile);
 

@@ -9,6 +9,47 @@
 #include "Modules.h"
 #include "Programs.h"
 
+int Modules::getRow(int rowColumn, int rowType) { // get the pitch from current column in the row
+    switch (rowType) {
+        case 1: return row[rowColumn];
+        case 2: return row2[rowColumn];
+        case 3: return rowLarge[rowColumn];
+        case 4: return tranTable[rowColumn];
+        default: return rowPrime[rowColumn];
+    }
+}
+
+void Modules::setRow(int rowColumn, int rowPitch, int rowType) { // set the pitch from current column in the row
+    switch (rowType) {
+        case 1: row[rowColumn] = rowPitch; break;
+        case 2: row2[rowColumn] = rowPitch; break;
+        case 3: rowLarge[rowColumn] = rowPitch; break;
+        case 4: tranTable[rowColumn] = rowPitch; break;
+        default: rowPrime[rowColumn] = rowPitch;
+    }
+}
+
+int Modules::getMultiRow(int rowColumn, int rowRow) { // get the pitch from current column in the multirow
+    return rowMulti[rowColumn][rowRow];
+}
+
+void Modules::setMultiRow(int rowColumn, int rowRow, int rowPitch) { // get the pitch from current column in the multirow
+    rowMulti[rowColumn][rowRow] = rowPitch;
+}
+
+int Modules::getRowSize(int rowType) { // get the size of row
+    if (rowType== 2)
+        return rowSize2;
+    return rowSize;
+}
+
+void Modules::setRowSize(int x, int rowType) { // set the size of the row
+    if (rowType == 2)
+        rowSize2 = x;
+    else
+        rowSize = x;
+}
+
 void Modules::programCalling(Printer p, Modules &mo, int m) { // execute sub-programs
     Programs program;
     bool valid;
@@ -61,22 +102,22 @@ void Modules::swap(int &a, int &b) {	// swap a and b
     b = temp;
 }
 
-void Modules::insertionSort(int arrSize, int *ptArr) { // insertion sort of an array
-    for (int i = 0; i < arrSize; i++) {
+void Modules::insertionSort() { // insertion sort of an array
+    for (int i = 0; i < rowSize; i++) {
         int j = i;
-        while (j > 0 && *(ptArr + j) < *(ptArr + j - 1)) {
-            swap(*(ptArr + j), *(ptArr + j - 1));
+        while (j > 0 && rowPrime[j] < rowPrime[j - 1]) {
+            swap(rowPrime[j], rowPrime[j - 1]);
             j--;
         }
     }
 }
 
-void Modules::insertionSortMulti(int arrSize, int arrMulti[48][48]) {  // insertion sort of a 2-D array
-    for (int k = 0; k < arrSize * 4; k++) { // insertion sort of all normal sets
-        for (int i = 0; i < arrSize; i++) {
+void Modules::insertionSortMulti() {  // insertion sort of a 2-D array
+    for (int k = 0; k < rowSize * 4; k++) { // insertion sort of all normal sets
+        for (int i = 0; i < rowSize; i++) {
             int j = i;
-            while (j > 0 && arrMulti[k][j] < arrMulti[k][j - 1]) {
-                swap(arrMulti[k][j], arrMulti[k][j - 1]);
+            while (j > 0 && rowMulti[k][j] < rowMulti[k][j - 1]) {
+                swap(rowMulti[k][j], rowMulti[k][j - 1]);
                 j--;
             }
         }
@@ -190,7 +231,7 @@ void Modules::inputInvalid(bool &check) { // input invalid warning
     cout << "INPUT INVALID--please try again..." << endl;
 }
 
-void Modules::generateTwelve(int arr[50]) {    // populate an array with a random twelve-tone row
+void Modules::generateTwelve(int rType) {    // populate an array with a random twelve-tone row
     bool repeated;
     int generatedPitch;
     int counter = 0;
@@ -202,71 +243,78 @@ void Modules::generateTwelve(int arr[50]) {    // populate an array with a rando
         generatedPitch = rand() % 12;	// generate a random number between 0-11
 
         for (int i = 0; i < counter; i++) {  // check all items before the current position
-            if (generatedPitch == arr[i])  // if a pitch is repeated, repeated = true, do not advance counter
+            if (generatedPitch == getRow(i, 1))  // if a pitch is repeated, repeated = true, do not advance counter
                 repeated = true;		   // otherwise, repeated remains false
         }
 
         if (repeated == false) {  // if there's no repeat before the current position, assign the pitch
-            arr[counter] = generatedPitch;
+            setRow(counter, generatedPitch, rType);
             counter++;  // continue to the next item in array
         }
     }
 }
 
-int Modules::inputRowLength(int lim, string num) {  // user input: how many pitches?
+void Modules::inputRowLength(int rType, int lim, string num) {  // user input: how many pitches?
     bool valid;	// input valid check
-    int arrSize;	// size of row
+    int input;	// size of row
 
     do {
         valid = true;
         cout << "How many pitches would you like in your " << num << "row (1-" << lim << ")? ";
-        cin >> arrSize;
-        if (arrSize < 1 || arrSize > lim || !cin)
+        cin >> input;
+        if (input < 1 || input > lim || !cin) {
             inputInvalid(valid);
+            continue;
+        }
+        setRowSize(input, rType);
     } while (valid == false);
-
-    return arrSize;
 }
 
-void Modules::inputRow(int arrSize, int r[50], string num) { // user input: what pitches?
+void Modules::inputRow(int rType, string num) { // user input: what pitches?
     bool valid;	// input valid check
     string input;
 
-    for (int i = 0; i < arrSize; i++) {
+    for (int i = 0; i < getRowSize(rType); i++) {
         cout << "Enter your " << num << "row in pitches or numbers (" << i + 1 << "): ";
         do {
             valid = true;
             cin >> input;
-            r[i] = pitchToNum(input);	// convert input into pitch numbers
-            if (r[i] == -1)
+            if (pitchToNum(input) == -1) {
                 inputInvalid(valid);
+                continue;
+            }
+            setRow(i, pitchToNum(input), rType);
         } while (valid == false);
     }
 }
 
-void Modules::inputRowNor(int arrSize, int r[50]) {  // input for normalize()
+void Modules::inputRowNor() {  // input for normalize()
     bool valid;	// input valid check
+    int input;
 
-    for (int i = 0; i < arrSize; i++) {
+    for (int i = 0; i < getRowSize(1); i++) {
         cout << "Enter your row in any integers between -" << MAXINT
             << " and " << MAXINT << " (" << i + 1 << "): ";
         do {
             valid = true;
-            cin >> r[i];
-            if (r[i] < -MAXINT || r[i] > MAXINT || !cin)
+            cin >> input;
+            if (getRow(i, 1) < -MAXINT || getRow(i, 1) > MAXINT || !cin) {
                 inputInvalid(valid);
+                continue;
+            }
+            setRow(i, input, 1);
         } while (valid == false);
     }
 }
 
-void Modules::transposition(int tran[50], int arrSize, int r[50]) {	// make a transposition table
-    tran[0] = 0;	// no transposition for the first pitch
-    for (int i = 1; i < arrSize; i++)
+void Modules::transposition(int rType) {	// make a transposition table
+    setRow(0, 0, 4); // no transposition for the first pitch
+    for (int i = 1; i < getRowSize(1); i++)
         // initialize a transposition table to find the distance between each pitch in the row
-        tran[i] = r[i] - r[i - 1]; // start with subtracting the 1st pitch from the 2nd pitch
+        setRow(i, getRow(i, rType) - getRow(i - 1, rType), 4); // start with subtracting the 1st pitch from the 2nd pitch
 }
 
-void Modules::populateRow(bool fixed, int &arrSize, int arr[50], string prompt) {	// populate an array
+void Modules::populateRow(bool fixed, int rType, string prompt) {	// populate an array
     char answer;
     bool valid; //input valid check
 
@@ -279,14 +327,14 @@ void Modules::populateRow(bool fixed, int &arrSize, int arr[50], string prompt) 
         else {
             switch (answer) {
                 case 'y':
-                    generateTwelve(arr);
-                    arrSize = 12;
+                    setRowSize(12, rType);
+                    generateTwelve(rType);
                     break;
                 case 'n':
                     cout << endl << prompt << endl;
                     if(fixed == false)	// if the array size is not fixed, prompt user to input size
-                        arrSize = inputRowLength();
-                    inputRow(arrSize, arr);
+                        inputRowLength(rType);
+                    inputRow(rType);
                     break;
                 default:
                     inputInvalid(valid);
@@ -307,12 +355,9 @@ int Modules::rotationDirection() {    // determine the direction of rotation (de
             inputInvalid(valid);	// back to loop if input is invalid
         else {
             switch (direction) {
-                case 'y':
-                    return -1;	// rotate to left
-                case 'n':
-                    return 1;	// rotate to right
-                default:
-                    inputInvalid(valid);
+                case 'y': return -1;    // rotate to left
+                case 'n': return 1; // rotate to right
+                default: inputInvalid(valid);
             }
         }
     } while (valid == false);
