@@ -313,7 +313,7 @@ void Programs::primeSet(Printer print, Modules &module) {
     while (column < module.getRowSize(1) - 1) {
         smallest = 12;  // initialize smallest to 12 every time
         // find smallest pitch on each column
-        for (int i = 0; module.getRowSize(1) * 4; i++) {
+        for (int i = 0; i < module.getRowSize(1) * 4; i++) {
             if (posArr[i] >= 0)  // only check posArr[i] that are positive
                 smallest = (module.getMultiRow(posArr[i], column) < smallest) ? module.getMultiRow(posArr[i], column) : smallest;
         }
