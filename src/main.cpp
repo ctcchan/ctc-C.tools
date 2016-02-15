@@ -21,7 +21,7 @@ int main() {
         print.menu(); // print out menu
         cin >> menuChoice;
         cout << endl;
-        programCalling(print, module, menuChoice); // call programs
+        programCalling(print, module, menuChoice, valid); // call programs
         if (menuChoice <= NUMBER_OF_PROGRAMS && menuChoice > 0)
             // only print this line if user's menu choice has been within the correct range
             // and when the program has been executed corrected
