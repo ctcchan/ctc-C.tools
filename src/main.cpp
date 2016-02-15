@@ -5,7 +5,7 @@
 #include "Modules.h"
 #include "Programs.h"
 
-void programCalling(Printer &p, Modules &mo, int m);
+void programCalling(Printer &p, Modules &mo, int m, bool &valid);
 
 int main() {
     Printer print;
@@ -34,9 +34,8 @@ int main() {
     return 0;
 }
 
-void programCalling(Printer &p, Modules &mo, int m) { // execute sub-programs
+void programCalling(Printer &p, Modules &mo, int m, bool &valid) { // execute sub-programs
     Programs program;
-    bool valid;
 
     if (!cin)    // if cin is in fail state, no need to go through switch statement
         mo.inputInvalid(valid);
