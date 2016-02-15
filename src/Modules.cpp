@@ -5,9 +5,7 @@
 #include <ctime>
 
 #include "GlobalVariables.h"
-#include "Printer.h"
 #include "Modules.h"
-#include "Programs.h"
 
 int Modules::getRow(int rowColumn, int rowType) { // get the pitch from current column in the row
     switch (rowType) {
@@ -48,33 +46,6 @@ void Modules::setRowSize(int x, int rowType) { // set the size of the row
         rowSize2 = x;
     else
         rowSize = x;
-}
-
-void Modules::programCalling(Printer p, Modules &mo, int m) { // execute sub-programs
-    Programs program;
-    bool valid;
-
-    if (!cin)    // if cin is in fail state, no need to go through switch statement
-        inputInvalid(valid);
-    else {
-        switch (m) { // choose from the menu and execute selected program
-            case 0: break;
-            case 1: program.randomRow(p, mo); break;
-            case 2: program.normalize(p, mo); break;
-            case 3: program.rowTable(p, mo); break;
-            case 4: program.matrix(p, mo); break;
-            case 5: program.matrixRotate(p, mo); break;
-            case 6: program.multiTable(p, mo, 1, 1); break; // range = 1 cancels the effect of the rotation
-            case 7: program.multiTable(p, mo, 1, 0); break;	// when range is 0, it lets the j + i take effect (rotation)
-            case 8: program.multiTable(p, mo, -1, 1); break; // multiply by -1 to change sign of the table, thus making inversions
-            case 9: program.multiTable(p, mo, -1, 0); break;
-            case 10: program.primeSet(p, mo); break;
-            case 11: program.primeTable(p); break;
-            case 12: program.permuteTable(p, mo); break;
-            case 13: program.subsetsTable(p, mo); break;
-            default: inputInvalid(valid); // check if invalid, go back to menu
-        }
-    }
 }
 
 int Modules::mod(int num, int sizeRange) {	// make sure pitch classes are in the range of sizeRange (default: 12)

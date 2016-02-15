@@ -17,7 +17,6 @@ class Modules {
         void setMultiRow(int rowColumn, int rowRow, int rowPitch);
         int getRowSize(int rowType);
         void setRowSize(int x, int rowType);
-        void programCalling(Printer print, Modules &module, int m);
         int mod(int num, int rangeSize = 12);
         //int modRecur(int num, int rangeSize = 12);
         void swap(int &a, int &b);
