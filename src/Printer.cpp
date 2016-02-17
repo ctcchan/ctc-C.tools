@@ -103,12 +103,12 @@ void Printer::programHeading(char out, ofstream &outFile) {  // overloaded funct
     fillDisplay('*', 14);
     cout << endl;
 
-    if (out == 'y')
+    if (out == 'y') {
         outFile << "The Prime Set" << endl;
-
-    for (int i = 0; i < mod.getRowSize(1); i++)
-        outFile << TABLE[mod.getRow(i, 5)] << " ";
-    outFile << endl << endl;
+        for (int i = 0; i < mod.getRowSize(1); i++)
+            outFile << TABLE[mod.getRow(i, 5)] << " ";
+        outFile << endl << endl;
+    }
 }
 
 void Printer::primeReference() {  // reference to Larry Solomon's web site

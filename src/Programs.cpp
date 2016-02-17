@@ -356,7 +356,7 @@ void Programs::primeSet(Printer &print, Modules &module) {
             (sumArr[i] <= sumArr[position] ? i : position) : position;
     }
     */
-    //print.programHeading(choice, outputFile);
+    print.programHeading(choice, outputFile);
     /*
         for(int i = 0; i < x * 4; i++) { // print out all the sets for checking
             for(int j = 0; j < x; j++) {
