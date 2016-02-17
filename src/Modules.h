@@ -32,6 +32,7 @@ class Modules {
             }
         }
     public:
+        Modules() : rowSize(0), rowSize2(0) {  } // default constructor
         int getRow(int rowColumn, int rowType);
         void setRow(int rowColumn, int rowPitch, int rowType);
         int getMultiRow(int rowColumn, int rowRow);
@@ -56,6 +57,7 @@ class Modules {
         void populateRow(bool fixed, int rType, string prompt);
         int rotationDirection();
         void outputting(char &f, ofstream &outFile);
+        ~Modules() {  } // destructor to free up memory
 };
 
 #endif
