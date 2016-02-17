@@ -10,9 +10,9 @@ class Modules {
         int rowMulti[48][48];
         int rowSize;
         int rowSize2;
-        void sorting(int choice) {
+        void sorting(int choice) { // private sorting function; use sortRow(int) to activate this function
             if (choice == 1){
-                for (int i = 0; i < rowSize; i++) { //
+                for (int i = 0; i < rowSize; i++) { // insertion sort of rowPrime
                     int j = i;
                     while (j > 0 && rowPrime[j] < rowPrime[j - 1]) {
                         swap(rowPrime[j], rowPrime[j - 1]);
