@@ -48,6 +48,10 @@ void Modules::setRowSize(int x, int rowType) { // set the size of the row
         rowSize = x;
 }
 
+void Modules::sortRow(int choice) { // access insertion sort private function
+    sorting(choice);
+}
+
 int Modules::mod(int num, int sizeRange) {	// make sure pitch classes are in the range of sizeRange (default: 12)
     while(num >= sizeRange)
         num -= sizeRange; // keep subtracting sizeRange from input until it is in range
@@ -71,28 +75,6 @@ void Modules::swap(int &a, int &b) {	// swap a and b
     int temp = a;
     a = b;
     b = temp;
-}
-
-void Modules::insertionSort() { // insertion sort of an array
-    for (int i = 0; i < rowSize; i++) {
-        int j = i;
-        while (j > 0 && rowPrime[j] < rowPrime[j - 1]) {
-            swap(rowPrime[j], rowPrime[j - 1]);
-            j--;
-        }
-    }
-}
-
-void Modules::insertionSortMulti() {  // insertion sort of a 2-D array
-    for (int k = 0; k < rowSize * 4; k++) { // insertion sort of all normal sets
-        for (int i = 0; i < rowSize; i++) {
-            int j = i;
-            while (j > 0 && rowMulti[k][j] < rowMulti[k][j - 1]) {
-                swap(rowMulti[k][j], rowMulti[k][j - 1]);
-                j--;
-            }
-        }
-    }
 }
 
 int Modules::pitchToNum(string pitch) {   // convert pitch numbers/numbers from string to integer (0-11)

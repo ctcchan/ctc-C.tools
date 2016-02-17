@@ -10,6 +10,27 @@ class Modules {
         int rowMulti[48][48];
         int rowSize;
         int rowSize2;
+        void sorting(int choice) {
+            if (choice == 1){
+                for (int i = 0; i < rowSize; i++) { //
+                    int j = i;
+                    while (j > 0 && rowPrime[j] < rowPrime[j - 1]) {
+                        swap(rowPrime[j], rowPrime[j - 1]);
+                        j--;
+                    }
+                }
+            } else {
+                for (int k = 0; k < rowSize * 4; k++) { // insertion sort of all normal sets
+                    for (int i = 0; i < rowSize; i++) {
+                        int j = i;
+                        while (j > 0 && rowMulti[k][j] < rowMulti[k][j - 1]) {
+                            swap(rowMulti[k][j], rowMulti[k][j - 1]);
+                            j--;
+                        }
+                    }
+                }
+            }
+        }
     public:
         int getRow(int rowColumn, int rowType);
         void setRow(int rowColumn, int rowPitch, int rowType);
@@ -17,11 +38,10 @@ class Modules {
         void setMultiRow(int rowColumn, int rowRow, int rowPitch);
         int getRowSize(int rowType);
         void setRowSize(int x, int rowType);
+        void sortRow(int choice);
         int mod(int num, int rangeSize = 12);
         //int modRecur(int num, int rangeSize = 12);
         void swap(int &a, int &b);
-        void insertionSort();
-        void insertionSortMulti();
         int pitchToNum(string pitch);
         int charToNum(char pitch);
         string intToString(int num);

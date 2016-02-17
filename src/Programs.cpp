@@ -255,7 +255,7 @@ void Programs::primeSet(Printer &print, Modules &module) {
     module.inputRow(5);
     cout << endl;
 
-    module.insertionSort(); // insertion sort of row[i]
+    module.sortRow(1); // insertion sort of row[i]
 
     // initialize a large 2-D array as a grid
     for (int i = 0; i < module.getRowSize(1); i++) { //populate the 2-D array with all transpositions of normal sets
@@ -278,7 +278,7 @@ void Programs::primeSet(Printer &print, Modules &module) {
             module.setMultiRow(i, j, module.getMultiRow(i, j) - smallest);
     }
 
-    module.insertionSortMulti();    // insertion sort of all normal sets
+    module.sortRow(2);    // insertion sort of all normal sets
 
     int position = 0;
     /*
