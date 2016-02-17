@@ -53,8 +53,8 @@ void Printer::programHeading(string program, int filling, char out, ofstream &ou
 
 // overloaded function to print out multiplication programs' heading
 void Printer::programHeading(int s, int r, int d, char out, ofstream &outFile, string addString) {
-    Modules module;
-    
+    Modules mod;
+
     if (d == 1) d = 8;   //  " (right)" has 8 characters
     else if (d == -1) d = 7; // " (left)" has 7 characters
     else d = 0;
@@ -86,18 +86,18 @@ void Printer::programHeading(int s, int r, int d, char out, ofstream &outFile, s
             outFile << "The Multiplication Table";
         outFile << endl;
 
-        for (int i = 0; i < module.getRowSize(1); i++)
-            outFile << TABLE[module.getRow(i, 1)] << " ";
+        for (int i = 0; i < mod.getRowSize(1); i++)
+            outFile << TABLE[mod.getRow(i, 1)] << " ";
         outFile << " x   ";
-        for (int i = 0; i < module.getRowSize(2); i++)
-            outFile << TABLE[module.getRow(i, 2)] << " ";
+        for (int i = 0; i < mod.getRowSize(2); i++)
+            outFile << TABLE[mod.getRow(i, 2)] << " ";
         outFile << endl << endl;
     }
 }
 
 void Printer::programHeading(char out, ofstream &outFile) {  // overloaded function to print out prime set's heading
-    Modules module;
-    
+    Modules mod;
+
     fillDisplay('*', 14);
     cout << endl << "The Prime Set" << endl;
     fillDisplay('*', 14);
@@ -106,8 +106,8 @@ void Printer::programHeading(char out, ofstream &outFile) {  // overloaded funct
     if (out == 'y')
         outFile << "The Prime Set" << endl;
 
-    for (int i = 0; i < module.getRowSize(1); i++)
-        outFile << TABLE[module.getRow(i, 1)] << " ";
+    for (int i = 0; i < mod.getRowSize(1); i++)
+        outFile << TABLE[mod.getRow(i, 5)] << " ";
     outFile << endl << endl;
 }
 
