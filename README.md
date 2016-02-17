@@ -1,6 +1,6 @@
 # ctc-C.tools
 ### Command Line Tools for Composers
-### Version 2.0
+### Version 3.0
 
 ### Download
 Download using Git.
