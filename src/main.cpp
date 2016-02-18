@@ -1,6 +1,5 @@
 #include <iostream>
 
-#include "GlobalVariables.h"
 #include "Printer.h"
 #include "Modules.h"
 #include "Programs.h"
