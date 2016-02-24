@@ -14,13 +14,13 @@ void Printer::newLines(char out, ofstream &outFile) {
         outFile << endl << endl;
 }
 
-void Printer::heading() {
+void Printer::heading(string author, string title, double version, string year) {
     fillDisplay('=', 61);
-    cout << endl << "\t\t    ctc-C.tools ver. 2.0" << endl << endl
+    cout << endl << "\t\t    " << title << " ver. " << fixed << setprecision(1) << version << endl << endl
         << "This program lets you construct pitch sets, rows or matrixes" << endl
         << "from input, then display them or outputs them to a file in" << endl
         << "the same directory. Please choose from the options below." << endl << endl
-        << "\t\t\t\t" << "by Chin Ting Chan, 2015-16" << endl;
+        << "\t\t\t\t" << "by " << author <<", " << year << endl;
     fillDisplay('=', 61);
 }
 
