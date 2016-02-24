@@ -10,11 +10,7 @@ int main() {
     Printer print;
     Modules module;
 
-    const string AUTHOR = "Chin Ting Chan"; // author name
-    const string TITLE = "ctc-C.tools";  // program title
-    const double VERSION = 2.0; // version of program
-    const string YEAR = "2015-16"; // year
-    print.heading(AUTHOR, TITLE, VERSION, YEAR);
+    print.heading();
 
     const int NUMBER_OF_PROGRAMS = 13;   // number of sub-programs that can be called
     int menuChoice;

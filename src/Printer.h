@@ -5,10 +5,19 @@
 #include "GlobalVariables.h"
 
 class Printer {
+    private:
+        string author = "Chin Ting Chan";
+        string title = "ctc-C.tools";
+        string version = "2.0";
+        string year = "2015-16";
     public:
+        string getAuthor();
+        string getTitle();
+        string getVersion();
+        string getYear();
         void fillDisplay(char s, int num);    // fill the display with user-defined characters
         void newLines(char out, ofstream &outFile); // print out new lines
-        void heading(string author, string title, double version, string year); // print out the program's heading
+        void heading(); // print out the program's heading
         void menu();    // print out the menu of programs
         void programHeading(string program, int filling, char out, ofstream &outFile, string addString = ""); // print out the heading of the program
         void programHeading(int s, int r, int d, char out, ofstream &outFile, string addString = ""); // overloaded function to print out multiplication programs' heading

@@ -4,6 +4,22 @@
 #include "Printer.h"
 #include "Modules.h"
 
+string Printer::getAuthor() {
+    return author;
+}
+
+string Printer::getTitle() {
+    return title;
+}
+
+string Printer::getVersion() {
+    return version;
+}
+
+string Printer::getYear() {
+    return year;
+}
+
 void Printer::fillDisplay(char s, int num) {
     cout << '\n' << setfill(s) << setw(num) << '\n';
 }
@@ -14,13 +30,13 @@ void Printer::newLines(char out, ofstream &outFile) {
         outFile << endl << endl;
 }
 
-void Printer::heading(string author, string title, double version, string year) {
+void Printer::heading() {
     fillDisplay('=', 61);
-    cout << endl << "\t\t    " << title << " ver. " << fixed << setprecision(1) << version << endl << endl
+    cout << endl << "\t\t    " << getTitle() << " ver. " << getVersion() << endl << endl
         << "This program lets you construct pitch sets, rows or matrixes" << endl
         << "from input, then display them or outputs them to a file in" << endl
         << "the same directory. Please choose from the options below." << endl << endl
-        << "\t\t\t\t" << "by " << author <<", " << year << endl;
+        << "\t\t\t\t" << "by " << getAuthor() <<", " << getYear() << endl;
     fillDisplay('=', 61);
 }
 
