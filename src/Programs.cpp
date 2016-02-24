@@ -202,7 +202,7 @@ void Programs::matrixRotate(Printer &print, Modules &module) {
     outputFile.close();
 }
 
-void Programs::multiTable(Printer &print, Modules &module, int sign, int range) {by 1 index
+void Programs::multiTable(Printer &print, Modules &module, int sign, int range) {
     char choice;    // choice, 'y' or 'n'
     ofstream outputFile;    // output stream object
     module.outputting(choice, outputFile);
