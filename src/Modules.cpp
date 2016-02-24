@@ -7,7 +7,7 @@
 #include "GlobalVariables.h"
 #include "Modules.h"
 
-int Modules::getRow(int rowColumn, int rowType) { // get the pitch from current column in the row
+int Modules::getRow(int rowColumn, int rowType) {
     switch (rowType) {
         case 1: return row[rowColumn];
         case 2: return row2[rowColumn];
@@ -17,7 +17,7 @@ int Modules::getRow(int rowColumn, int rowType) { // get the pitch from current 
     }
 }
 
-void Modules::setRow(int rowColumn, int rowPitch, int rowType) { // set the pitch from current column in the row
+void Modules::setRow(int rowColumn, int rowPitch, int rowType) {
     switch (rowType) {
         case 1: row[rowColumn] = rowPitch; break;
         case 2: row2[rowColumn] = rowPitch; break;
@@ -27,32 +27,32 @@ void Modules::setRow(int rowColumn, int rowPitch, int rowType) { // set the pitc
     }
 }
 
-int Modules::getMultiRow(int rowColumn, int rowRow) { // get the pitch from current column in the multirow
+int Modules::getMultiRow(int rowColumn, int rowRow) {
     return rowMulti[rowColumn][rowRow];
 }
 
-void Modules::setMultiRow(int rowColumn, int rowRow, int rowPitch) { // get the pitch from current column in the multirow
+void Modules::setMultiRow(int rowColumn, int rowRow, int rowPitch) {
     rowMulti[rowColumn][rowRow] = rowPitch;
 }
 
-int Modules::getRowSize(int rowType) { // get the size of row
+int Modules::getRowSize(int rowType) {
     if (rowType== 2)
         return rowSize2;
     return rowSize;
 }
 
-void Modules::setRowSize(int x, int rowType) { // set the size of the row
+void Modules::setRowSize(int x, int rowType) {
     if (rowType == 2)
         rowSize2 = x;
     else
         rowSize = x;
 }
 
-void Modules::sortRow(int choice) { // access insertion sort private function
+void Modules::sortRow(int choice) {
     sorting(choice);
 }
 
-int Modules::mod(int num, int sizeRange) {	// make sure pitch classes are in the range of sizeRange (default: 12)
+int Modules::mod(int num, int sizeRange) {
     while(num >= sizeRange)
         num -= sizeRange; // keep subtracting sizeRange from input until it is in range
     while(num < 0)
@@ -60,8 +60,6 @@ int Modules::mod(int num, int sizeRange) {	// make sure pitch classes are in the
     return num;
 }
 /*
-// same as Modules::mod() above, use recursion instead of loop
-// sometimes causes stack-overflow in multiTable()
 int Modules::modRecur(int num, int sizeRange) {
     if (num >= sizeRange)
         return modRecur(num - sizeRange, sizeRange);
@@ -71,13 +69,13 @@ int Modules::modRecur(int num, int sizeRange) {
         return num;
 }
 */
-void Modules::swap(int &a, int &b) {	// swap a and b
+void Modules::swap(int &a, int &b) {
     int temp = a;
     a = b;
     b = temp;
 }
 
-int Modules::pitchToNum(string pitch) {   // convert pitch numbers/numbers from string to integer (0-11)
+int Modules::pitchToNum(string pitch) {
     if (pitch == "0" || pitch == "C" || pitch == "c" || pitch == "B#" || pitch == "b#")
         return 0;
     else if (pitch == "1" || pitch == "C#" || pitch == "c#" || pitch == "Db" || pitch == "db")
@@ -106,7 +104,7 @@ int Modules::pitchToNum(string pitch) {   // convert pitch numbers/numbers from 
         return -1;
 }
 
-int Modules::charToNum(char pitch) {   // convert a char to a pitch number: A is 10, B is 11
+int Modules::charToNum(char pitch) {
     switch (pitch) {
         case '0': return 0;
         case '1': return 1;
@@ -123,7 +121,7 @@ int Modules::charToNum(char pitch) {   // convert a char to a pitch number: A is
     }
 }
 
-string Modules::intToString(int num) {   // convert an integer (0 - 11) to a string: 10 is A, 11 is B
+string Modules::intToString(int num) {
     switch (num) {
         case 0: return "0";
         case 1: return "1";
@@ -140,7 +138,7 @@ string Modules::intToString(int num) {   // convert an integer (0 - 11) to a str
     }
 }
 
-void Modules::permute(string soFar, string rest, int arrSize, char out, ofstream &outFile) {	// print out a permutation table of a given set
+void Modules::permute(string soFar, string rest, int arrSize, char out, ofstream &outFile) {
     if (rest == "") {	// convert char symbols from the sub-strings of soFar to pitches, then print out
         for (int i = 0; i < arrSize; i++) {
             cout << TABLE[charToNum(soFar[i])];
@@ -159,7 +157,7 @@ void Modules::permute(string soFar, string rest, int arrSize, char out, ofstream
     }
 }
 
-void Modules::subsets(string soFar, string rest, char out, ofstream &outFile) {	// print out all subsets of a given set
+void Modules::subsets(string soFar, string rest, char out, ofstream &outFile) {
     if (rest == "") {	// convert char symbols from the sub-strings of soFar to pitches, then print out
         for (int i = 0; i < static_cast<int>(soFar.length()); i++) {
             cout << TABLE[charToNum(soFar[i])];
@@ -177,14 +175,14 @@ void Modules::subsets(string soFar, string rest, char out, ofstream &outFile) {	
     }
 }
 
-void Modules::inputInvalid(bool &check) { // input invalid warning
+void Modules::inputInvalid(bool &check) {
     check = false;
     cin.clear();    // clear input stream
     cin.ignore(MAXINT, '\n'); // ignore the max integer from input until '\n'
     cout << "INPUT INVALID--please try again..." << endl;
 }
 
-void Modules::generateTwelve(int rType) {    // populate an array with a random twelve-tone row
+void Modules::generateTwelve(int rType) {
     bool repeated;
     int generatedPitch;
     int counter = 0;
@@ -207,7 +205,7 @@ void Modules::generateTwelve(int rType) {    // populate an array with a random 
     }
 }
 
-void Modules::inputRowLength(int rType, int lim, string num) {  // user input: how many pitches?
+void Modules::inputRowLength(int rType, int lim, string num) {
     bool valid;	// input valid check
     int input;	// size of row
 
@@ -223,7 +221,7 @@ void Modules::inputRowLength(int rType, int lim, string num) {  // user input: h
     } while (valid == false);
 }
 
-void Modules::inputRow(int rType, string num) { // user input: what pitches?
+void Modules::inputRow(int rType, string num) {
     bool valid;	// input valid check
     string input;
 
@@ -241,7 +239,7 @@ void Modules::inputRow(int rType, string num) { // user input: what pitches?
     }
 }
 
-void Modules::inputRowNor() {  // input for normalize()
+void Modules::inputRowNor() {
     bool valid;	// input valid check
     int input;
 
@@ -260,14 +258,14 @@ void Modules::inputRowNor() {  // input for normalize()
     }
 }
 
-void Modules::transposition(int rType) {	// make a transposition table
+void Modules::transposition(int rType) {
     setRow(0, 0, 4); // no transposition for the first pitch
     for (int i = 1; i < getRowSize(1); i++)
         // initialize a transposition table to find the distance between each pitch in the row
         setRow(i, getRow(i, rType) - getRow(i - 1, rType), 4); // start with subtracting the 1st pitch from the 2nd pitch
 }
 
-void Modules::populateRow(bool fixed, int rType, string prompt) {	// populate an array
+void Modules::populateRow(bool fixed, int rType, string prompt) {
     char answer;
     bool valid; //input valid check
 
@@ -296,7 +294,7 @@ void Modules::populateRow(bool fixed, int rType, string prompt) {	// populate an
     } while (valid == false);
 }
 
-int Modules::rotationDirection() {    // determine the direction of rotation (default to right)
+int Modules::rotationDirection() {
     char direction;
     bool valid;
 
@@ -317,7 +315,7 @@ int Modules::rotationDirection() {    // determine the direction of rotation (de
     return 1;
 }
 
-void Modules::outputting(char &f, ofstream &outFile) {  // output to a text file
+void Modules::outputting(char &f, ofstream &outFile) {
     string fName;
     bool valid;
 

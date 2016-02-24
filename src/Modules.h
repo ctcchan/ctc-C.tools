@@ -33,30 +33,30 @@ class Modules {
         }
     public:
         Modules() : rowSize(0), rowSize2(0) {  } // default constructor
-        int getRow(int rowColumn, int rowType);
-        void setRow(int rowColumn, int rowPitch, int rowType);
-        int getMultiRow(int rowColumn, int rowRow);
-        void setMultiRow(int rowColumn, int rowRow, int rowPitch);
-        int getRowSize(int rowType);
-        void setRowSize(int x, int rowType);
-        void sortRow(int choice);
-        int mod(int num, int rangeSize = 12);
-        //int modRecur(int num, int rangeSize = 12);
-        void swap(int &a, int &b);
-        int pitchToNum(string pitch);
-        int charToNum(char pitch);
-        string intToString(int num);
-        void permute(string soFar, string rest, int arrSize, char out, ofstream &outFile);
-        void subsets(string soFar, string rest, char out, ofstream &outFile);
-        void inputInvalid(bool &check);
-        void generateTwelve(int rType);
-        void inputRowLength(int rType, int lim = 50, string num = "");
-        void inputRow(int rType, string num = "");
-        void inputRowNor();
-        void transposition(int rType);
-        void populateRow(bool fixed, int rType, string prompt);
-        int rotationDirection();
-        void outputting(char &f, ofstream &outFile);
+        int getRow(int rowColumn, int rowType); // get the pitch from current column in the row
+        void setRow(int rowColumn, int rowPitch, int rowType); // set the pitch from current column in the row
+        int getMultiRow(int rowColumn, int rowRow); // get the pitch from current column in the multirow
+        void setMultiRow(int rowColumn, int rowRow, int rowPitch); // set the pitch from current column in the multirow
+        int getRowSize(int rowType); // get the size of row
+        void setRowSize(int x, int rowType); // set the size of the row
+        void sortRow(int choice); // access insertion sort private function
+        int mod(int num, int rangeSize = 12);	// make sure pitch classes are in the range of sizeRange (default: 12)
+        //int modRecur(int num, int rangeSize = 12); // same as Modules::mod() above, use recursion instead of loop; stack-overflow
+        void swap(int &a, int &b);	// swap a and b
+        int pitchToNum(string pitch); // convert pitch numbers/numbers from string to integer (0-11)
+        int charToNum(char pitch);    // convert a char to a pitch number: A is 10, B is 11
+        string intToString(int num);   // convert an integer (0 - 11) to a string: 10 is A, 11 is B
+        void permute(string soFar, string rest, int arrSize, char out, ofstream &outFile);	// print out a permutation table of a given set
+        void subsets(string soFar, string rest, char out, ofstream &outFile);	// print out all subsets of a given set
+        void inputInvalid(bool &check); // input invalid warning
+        void generateTwelve(int rType);    // populate an array with a random twelve-tone row
+        void inputRowLength(int rType, int lim = 50, string num = "");  // user input: how many pitches?
+        void inputRow(int rType, string num = ""); // user input: what pitches?
+        void inputRowNor(); // input for normalize()
+        void transposition(int rType);	// make a transposition table
+        void populateRow(bool fixed, int rType, string prompt);	// populate an array
+        int rotationDirection();    // determine the direction of rotation (default to right)
+        void outputting(char &f, ofstream &outFile);  // output to a text file
         ~Modules() {  } // destructor to free up memory
 };
 

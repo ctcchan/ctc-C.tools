@@ -5,7 +5,7 @@
 
 using namespace std;
 
-extern const int MAXINT;
-extern const string TABLE[];
+extern const int MAXINT; // max number an integer can hold
+extern const string TABLE[]; // chromatic table for printing
 
 #endif

@@ -4,7 +4,7 @@
 #include "Printer.h"
 #include "Modules.h"
 
-void Printer::fillDisplay(char s, int num) {    // fill the display with user-defined characters
+void Printer::fillDisplay(char s, int num) {
     cout << '\n' << setfill(s) << setw(num) << '\n';
 }
 
@@ -14,7 +14,7 @@ void Printer::newLines(char out, ofstream &outFile) {
         outFile << endl << endl;
 }
 
-void Printer::heading() { // print out the program's heading
+void Printer::heading() {
     fillDisplay('=', 61);
     cout << endl << "\t\t    ctc-C.tools ver. 3.0" << endl << endl
         << "This program lets you construct pitch sets, rows or matrixes" << endl
@@ -24,7 +24,7 @@ void Printer::heading() { // print out the program's heading
     fillDisplay('=', 61);
 }
 
-void Printer::menu() {    // print out the menu of programs
+void Printer::menu() {
     cout << endl << "0: Exit the program" << endl
         << "1: Generate a row of random pitches" << endl
         << "2: Construct a row with input of any integers" << endl
@@ -41,7 +41,7 @@ void Printer::menu() {    // print out the menu of programs
         << "13: Find all subsets of a given set" << endl << endl;
 }
 
-void Printer::programHeading(string program, int filling, char out, ofstream &outFile, string addString) { // print out the heading of the program
+void Printer::programHeading(string program, int filling, char out, ofstream &outFile, string addString) {
     fillDisplay('*', filling);
     cout << endl << program + addString << endl;    // add " (left)" or " (right)"
     fillDisplay('*', filling);
@@ -51,7 +51,6 @@ void Printer::programHeading(string program, int filling, char out, ofstream &ou
         outFile << program + addString << endl << endl;
 }
 
-// overloaded function to print out multiplication programs' heading
 void Printer::programHeading(int s, int r, int d, char out, ofstream &outFile, string addString) {
     Modules mod;
 
@@ -95,7 +94,7 @@ void Printer::programHeading(int s, int r, int d, char out, ofstream &outFile, s
     }
 }
 
-void Printer::programHeading(char out, ofstream &outFile) {  // overloaded function to print out prime set's heading
+void Printer::programHeading(char out, ofstream &outFile) {
     Modules mod;
 
     fillDisplay('*', 14);
@@ -111,7 +110,7 @@ void Printer::programHeading(char out, ofstream &outFile) {  // overloaded funct
     }
 }
 
-void Printer::primeReference() {  // reference to Larry Solomon's web site
+void Printer::primeReference() {
     cout << "** Reference: Solomon, Larry. \"The Table of Pitch Class Sets.\" "
         << "In Larry Solomon, Musician & Scholar," << endl
         << "http://solomonsmusic.net/pcsets.htm (accessed November 7, 2015)." << endl;

@@ -3,16 +3,16 @@
 
 class Programs {
     public:
-        void randomRow(Printer &print, Modules &module);
-        void normalize(Printer &print, Modules &module);
-        void rowTable(Printer &print, Modules &module);
-        void matrix(Printer &print, Modules &module);
-        void matrixRotate(Printer &print, Modules &module);
-        void multiTable(Printer &print, Modules &module, int sign, int range);
-        void primeSet(Printer &print, Modules &module);
-        void primeTable(Printer &print);
-        void permuteTable(Printer &print, Modules &module);
-        void subsetsTable(Printer &print, Modules &module);
+        void randomRow(Printer &print, Modules &module);   // generate a row of random pitches
+        void normalize(Printer &print, Modules &module);   // allow input of any integers to create a tone row
+        void rowTable(Printer &print, Modules &module);    // allow the use of a table other than the chromatic table
+        void matrix(Printer &print, Modules &module);  // create a matrix
+        void matrixRotate(Printer &print, Modules &module);  // matrix in rotation
+        void multiTable(Printer &print, Modules &module, int sign, int range);   // multiplications of various types, with inversion/in rotation
+        void primeSet(Printer &print, Modules &module); // find the prime set of a given set
+        void primeTable(Printer &print);  // print out the table of pitch class sets by Larry Solomon
+        void permuteTable(Printer &print, Modules &module);	// find all permutations of a given set
+        void subsetsTable(Printer &print, Modules &module);	// find all subsets of a given set
 };
 
 #endif

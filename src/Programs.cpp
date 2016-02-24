@@ -6,7 +6,7 @@
 #include "Modules.h"
 #include "Programs.h"
 
-void Programs::randomRow(Printer &print, Modules &module) {   // generate a row of random pitches
+void Programs::randomRow(Printer &print, Modules &module) {
     char choice;    // choice, 'y' or 'n'
     ofstream outputFile;    // output stream object
     module.outputting(choice, outputFile);
@@ -31,7 +31,7 @@ void Programs::randomRow(Printer &print, Modules &module) {   // generate a row 
     outputFile.close();
 }
 
-void Programs::normalize(Printer &print, Modules &module) {   // allow input of any integers to create a tone row
+void Programs::normalize(Printer &print, Modules &module) {
     char choice;    // choice, 'y' or 'n'
     ofstream outputFile;    // output stream object
     module.outputting(choice, outputFile);
@@ -56,7 +56,7 @@ void Programs::normalize(Printer &print, Modules &module) {   // allow input of 
     outputFile.close();
 }
 
-void Programs::rowTable(Printer &print, Modules &module) {    // allow the use of a table other than the chromatic table
+void Programs::rowTable(Printer &print, Modules &module) {
     char choice;    // choice, 'y' or 'n'
     ofstream outputFile;    // output stream object
     module.outputting(choice, outputFile);
@@ -103,7 +103,7 @@ void Programs::rowTable(Printer &print, Modules &module) {    // allow the use o
     outputFile.close();
 }
 
-void Programs::matrix(Printer &print, Modules &module) {  // create a matrix
+void Programs::matrix(Printer &print, Modules &module) {
     char choice;    // choice, 'y' or 'n'
     ofstream outputFile;    // output stream object
     module.outputting(choice, outputFile);
@@ -167,7 +167,7 @@ void Programs::matrix(Printer &print, Modules &module) {  // create a matrix
     outputFile.close();
 }
 
-void Programs::matrixRotate(Printer &print, Modules &module) {  // matrix in rotation
+void Programs::matrixRotate(Printer &print, Modules &module) {
     char choice;    // choice, 'y' or 'n'
     ofstream outputFile;    // output stream object
     module.outputting(choice, outputFile);
@@ -202,7 +202,7 @@ void Programs::matrixRotate(Printer &print, Modules &module) {  // matrix in rot
     outputFile.close();
 }
 
-void Programs::multiTable(Printer &print, Modules &module, int sign, int range) {   // multiplications of various types, with inversion/in rotation by 1 index
+void Programs::multiTable(Printer &print, Modules &module, int sign, int range) {by 1 index
     char choice;    // choice, 'y' or 'n'
     ofstream outputFile;    // output stream object
     module.outputting(choice, outputFile);
@@ -499,7 +499,7 @@ void Programs::primeSet(Printer &print, Modules &module) {
     inFile2.close();
 }
 
-void Programs::primeTable(Printer &print) {  // print out the table of pitch class sets by Larry Solomon
+void Programs::primeTable(Printer &print) {
     ifstream inFile, inFile2;
     inFile.open("setTable.txt");
     inFile2.open("setTableDescription.txt");
@@ -540,7 +540,7 @@ void Programs::primeTable(Printer &print) {  // print out the table of pitch cla
     inFile2.close();
 }
 
-void Programs::permuteTable(Printer &print, Modules &module) {	// find all permutations of a given set
+void Programs::permuteTable(Printer &print, Modules &module) {
     char choice;    // choice, 'y' or 'n'
     ofstream outputFile;    // output stream object
     module.outputting(choice, outputFile);
@@ -562,7 +562,7 @@ void Programs::permuteTable(Printer &print, Modules &module) {	// find all permu
     outputFile.close();
 }
 
-void Programs::subsetsTable(Printer &print, Modules &module) {	// find all subsets of a given set
+void Programs::subsetsTable(Printer &print, Modules &module) {
     char choice;    // choice, 'y' or 'n'
     ofstream outputFile;    // output stream object
     module.outputting(choice, outputFile);
