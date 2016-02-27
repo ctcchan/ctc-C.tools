@@ -20,6 +20,14 @@ string Printer::getYear() {
     return year;
 }
 
+string Printer::getEmail() {
+    return email;
+}
+
+string Printer::getWeb() {
+    return web;
+}
+
 void Printer::fillDisplay(char s, int num) {
     cout << '\n' << setfill(s) << setw(num) << '\n';
 }
@@ -32,11 +40,15 @@ void Printer::newLines(char out, ofstream &outFile) {
 
 void Printer::heading() {
     fillDisplay('=', 61);
-    cout << endl << "\t\t    " << getTitle() << " ver. " << getVersion() << endl << endl
+    cout << endl << "\t\t    " << getTitle() << ", " << getVersion() << ", " << getYear() << endl << endl
         << "This program lets you construct pitch sets, rows or matrixes" << endl
         << "from input, then display them or outputs them to a file in" << endl
         << "the same directory. Please choose from the options below." << endl << endl
-        << "\t\t\t\t" << "by " << getAuthor() <<", " << getYear() << endl;
+        << "** This program can be downloaded and used freely but" << endl
+        << " it is provided with no warranties." << endl << endl
+        << right << setfill(' ') << setw(46) << "by " << getAuthor() << endl
+        << setw(60) << getEmail() << endl
+        << setw(60) << getWeb() << endl;
     fillDisplay('=', 61);
 }
 

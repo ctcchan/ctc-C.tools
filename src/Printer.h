@@ -8,13 +8,17 @@ class Printer {
     private:
         string author = "Chin Ting Chan";
         string title = "ctools";
-        string version = "2.0";
+        string version = "ver. 2.0";
         string year = "2015-16";
+        string email = "chintingchan@gmail.com";
+        string web = "www.chintingchan.com";
     public:
         string getAuthor();
         string getTitle();
         string getVersion();
         string getYear();
+        string getEmail();
+        string getWeb();
         void fillDisplay(char s, int num);    // fill the display with user-defined characters
         void newLines(char out, ofstream &outFile); // print out new lines
         void heading(); // print out the program's heading
