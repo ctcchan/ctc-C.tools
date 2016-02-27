@@ -1,4 +1,4 @@
-# ctc-C.tools
+# ctools
 Command Line Tools for Composers
 
-See my project page: <http://ctcchan.github.io/ctc-C.tools/>
+See my project page: <http://ctcchan.github.io/ctools/>
