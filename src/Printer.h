@@ -7,7 +7,7 @@
 class Printer {
     private:
         string author = "Chin Ting Chan";
-        string title = "ctc-C.tools";
+        string title = "ctools";
         string version = "2.0";
         string year = "2015-16";
     public:
