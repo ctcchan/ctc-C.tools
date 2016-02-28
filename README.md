@@ -1,6 +1,6 @@
 # ctools
 ### Command Line Tools for Composers
-### Version 3.0
+### Version 2.0
 
 ### Download
 Download using Git.
@@ -8,15 +8,27 @@ Download using Git.
     $ git clone https://github.com/ctcchan/ctools.git
 
 ### Installation
-Installing inside the ctools directory.
+Build the program.
 
+    $ cd ctools
     $ make
 
-Next, copy the binary file "ctools" in your bash path.
-
-    $ cp ctools /usr/local/bin
-    $ export PATH=$PATH:/usr/local/bin
-
-...or simply run it with the executable file "ctools" while you are in the ctools directory.
+You can run it directly with the executable file "ctools" while you are in the ctools directory.
 
     $ ./ctools
+
+...or you can install it to your /usr/local/bin directory.
+
+    $ make install
+
+Run the program anywhere where in the shell.
+
+    $ ctools
+
+### Un-installation
+Un-install from your computer.
+
+    $ make uninstall
+
+### Input/output text files are handled in the CURRENT directory
+The files "setTable.txt" and "setTableDescription.txt" should be in the current path for the program to recognize them.
