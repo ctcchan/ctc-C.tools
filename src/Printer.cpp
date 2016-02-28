@@ -40,12 +40,13 @@ void Printer::newLines(char out, ofstream &outFile) {
 
 void Printer::heading() {
     fillDisplay('=', 61);
-    cout << endl << "\t\t    " << getTitle() << ", " << getVersion() << ", " << getYear() << endl << endl
+    cout << endl << "\t\t" << getTitle() << ", " << getVersion() << ", " << getYear() << endl << endl
         << "This program lets you construct pitch sets, rows or matrixes" << endl
-        << "from input, then display them or outputs them to a file in" << endl
-        << "the same directory. Please choose from the options below." << endl << endl
+        << "from input, then display them to the console or outputs them" << endl
+        << "to a file in your current working directory. Please choose" << endl
+        << "from the options below." << endl << endl
         << "** This program can be downloaded and used freely but" << endl
-        << " it is provided with no warranties." << endl << endl
+        << "is provided with no warranties." << endl << endl
         << right << setfill(' ') << setw(46) << "by " << getAuthor() << endl
         << setw(60) << getEmail() << endl
         << setw(60) << getWeb() << endl;
