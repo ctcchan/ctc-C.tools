@@ -48,8 +48,32 @@ void Modules::setRowSize(int x, int rowType) {
         rowSize = x;
 }
 
+void Modules::swap(int &a, int &b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
 void Modules::sortRow(int choice) {
-    sorting(choice);
+    if (choice == 1) {
+        for (int i = 0; i < rowSize; i++) { // insertion sort of rowPrime
+            int j = i;
+            while (j > 0 && rowPrime[j] < rowPrime[j - 1]) {
+                swap(rowPrime[j], rowPrime[j - 1]);
+                j--;
+            }
+        }
+    } else {
+        for (int k = 0; k < rowSize * 4; k++) { // insertion sort of all normal sets
+            for (int i = 0; i < rowSize; i++) {
+                int j = i;
+                while (j > 0 && rowMulti[k][j] < rowMulti[k][j - 1]) {
+                    swap(rowMulti[k][j], rowMulti[k][j - 1]);
+                    j--;
+                }
+            }
+        }
+    }
 }
 
 int Modules::mod(int num, int sizeRange) {
@@ -69,11 +93,6 @@ int Modules::modRecur(int num, int sizeRange) {
         return num;
 }
 */
-void Modules::swap(int &a, int &b) {
-    int temp = a;
-    a = b;
-    b = temp;
-}
 
 int Modules::pitchToNum(string pitch) {
     if (pitch == "0" || pitch == "C" || pitch == "c" || pitch == "B#" || pitch == "b#")
