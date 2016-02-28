@@ -8,7 +8,7 @@ Download using Git.
     $ git clone https://github.com/ctcchan/ctools.git
 
 ### Installation
-Installing inside the ctc-C.tools directory.
+Installing inside the ctools directory.
 
     $ make
 
