@@ -32,4 +32,6 @@
 *.xcbkptlist
 
 #
+build
+bin
 ctools
