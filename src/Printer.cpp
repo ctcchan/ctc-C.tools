@@ -45,8 +45,8 @@ void Printer::heading() {
         << "from input, then display them to the console or outputs them" << endl
         << "to a file in your current working directory. Please choose" << endl
         << "from the options below." << endl << endl
-        << "** This program can be downloaded and used freely but" << endl
-        << "is provided with no warranties." << endl << endl
+        << "** This program can be downloaded and used freely but is" << endl
+        << "provided with no warranties." << endl << endl
         << right << setfill(' ') << setw(46) << "by " << getAuthor() << endl
         << setw(60) << getEmail() << endl
         << setw(60) << getWeb() << endl;
