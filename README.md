@@ -17,12 +17,9 @@ You can run it directly with the executable file "ctools" while you are in the c
 
     $ ./ctools
 
-...or you can install it to your /usr/local/bin directory.
+...or you can install it to your /usr/local/bin directory and be able to run it anywhere in the shell environment
 
     $ make install
-
-Run the program anywhere where in the shell.
-
     $ ctools
 
 ### Un-installation
