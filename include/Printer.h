@@ -5,13 +5,6 @@
 #include "GlobalVariables.h"
 
 class Printer {
-    private:
-        string author = "Chin Ting Chan";
-        string title = "ctools";
-        string version = "ver. 2.0";
-        string year = "2015-16";
-        string email = "chintingchan@gmail.com";
-        string web = "www.chintingchan.com";
     public:
         string getAuthor();
         string getTitle();
@@ -27,6 +20,13 @@ class Printer {
         void programHeading(int s, int r, int d, char out, ofstream &outFile, string addString = ""); // overloaded function to print out multiplication programs' heading
         void programHeading(char out, ofstream &outFile);  // overloaded function to print out prime set's heading
         void primeReference();  // reference to Larry Solomon's web site
+    private:
+        string author = "Chin Ting Chan";
+        string title = "ctools";
+        string version = "ver. 2.0";
+        string year = "2015-16";
+        string email = "chintingchan@gmail.com";
+        string web = "www.chintingchan.com";
 };
 
 #endif

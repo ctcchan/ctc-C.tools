@@ -2,14 +2,6 @@
 #define MODULES_H_
 
 class Modules {
-        int row[50];
-        int row2[50];
-        int rowLarge[10000];
-        int tranTable[50];
-        int rowPrime[12];
-        int rowMulti[48][48];
-        int rowSize;
-        int rowSize2;
     public:
         Modules() : rowSize(0), rowSize2(0) {  } // default constructor
         int getRow(int rowColumn, int rowType); // get the pitch from current column in the row
@@ -37,6 +29,15 @@ class Modules {
         int rotationDirection();    // determine the direction of rotation (default to right)
         void outputting(char &f, ofstream &outFile);  // output to a text file
         ~Modules() {  } // destructor to free up memory
+    private:
+        int row[50];
+        int row2[50];
+        int rowLarge[10000];
+        int tranTable[50];
+        int rowPrime[12];
+        int rowMulti[48][48];
+        int rowSize;
+        int rowSize2;
 };
 
 #endif
