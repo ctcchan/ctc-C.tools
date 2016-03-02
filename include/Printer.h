@@ -1,8 +1,14 @@
 #ifndef PRINTER_H_
 #define PRINTER_H_
 
+#include <iostream>
 #include <fstream>
-#include "GlobalVariables.h"
+#include <string>
+
+using namespace std;
+
+const int MAXINT = 2147483647; // max number an int can hold
+const string TABLE[12] = {"C  ", "C# ", "D  ", "Eb ", "E  ", "F  ", "F# ", "G  ", "Ab ", "A  ", "Bb ", "B  "}; // chromatic table for printing
 
 class Printer {
     public:

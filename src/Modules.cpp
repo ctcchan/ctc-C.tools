@@ -1,10 +1,9 @@
-#include <iostream>
 #include <iomanip>
 #include <fstream>
 #include <cstdlib>
 #include <ctime>
 
-#include "GlobalVariables.h"
+#include "Printer.h"
 #include "Modules.h"
 
 int Modules::getRow(int rowColumn, int rowType) {

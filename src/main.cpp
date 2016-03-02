@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "Printer.h"
 #include "Modules.h"
 #include "Programs.h"
