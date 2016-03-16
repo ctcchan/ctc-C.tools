@@ -10,46 +10,7 @@
 
 html, body {
     background: #888;
-    font-size: 12px;
-}
-
-nav.center {
-    border: 1px solid rgba(255, 255, 255, .5);
-    /* same as transition: background-color .5s ease-out .1s; */
-    transition-property: background-color;
-    transition-duration: .5s;
-    transition-timing-function: ease-out;
-    transition-delay: .1s;
-    position: relative;
-    overflow: hidden;
-}
-
-nav:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-    border-color: #fff;
-    border-left-width: 15px;
-    padding-left: 20px;
-    border-top-right-radius: 10px; border-bottom-right-radius: 10px;
-    letter-spacing: 2px;
-    font-size: 1.1em;
-    line-height; 16px;
-    text-shadow: 0px 2px 1px #aeaa18;
-}
-
-nav::after {
-    content: ' ';
-    display: block;
-    width: 10px;
-    height: 1000px;
-    background-color: #aeaa78;
-    position: absolute;
-    top: 0px;
-    left: -20px;
-    transition: left 1s;
-}
-
-nav:hover::after {
-    left: 0px;
+    font-size: 13px;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -61,10 +22,15 @@ author, title, h1, h2, h3, h4, h5, h6 {
     color: rgb(107, 107, 132);
 }
 
+author {
+    font: 1.2em Helvetica, Verdana, Geneva, sans-serif;
+    margin-bottom: .35em;
+}
+
 body {
     font-family: Verdana, Geneva, Helvetica, sans-serif;
     font-size: 100%;
-    width: 70%;
+    width: 75%;
     margin-right: auto;
     margin-left: auto;
     border: 3px ridge #000;
@@ -73,9 +39,10 @@ body {
     line-height: 1.8;
 }
 
-author {
-    font: 1.2em Helvetica, Verdana, Geneva, sans-serif;
-    margin-bottom: .35em;
+.container {
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 h1 {
@@ -119,14 +86,6 @@ pre {
     width: 80%;
 }
 
-pre.wrong {
-    border-left-color: red;
-}
-
-pre.correct {
-    border-left-color: green;
-}
-
 .center {
     text-align: center;
 }
@@ -134,17 +93,6 @@ pre.correct {
 header h2 {
     padding-bottom: .2em;
     border-bottom: 1px solid gray;
-}
-
-aside {
-    padding: 1.1em;
-    background:rgb(83, 104, 138);
-    color: white;
-    margin-bottom: 1em;
-}
-
-aside h4 {
-    color: white;
 }
 
 footer {
@@ -155,10 +103,6 @@ footer {
     margin-top: 1em;
 }
 
-blockquote {
-    font-style: italic;
-}
-
 .flowRight {
     float: right;
     margin-left: 10px;
@@ -167,74 +111,4 @@ blockquote {
 .flowLeft {
     float: left;
     margin-right: 10px;
-}
-
-/*tab styles*/
-aside.languages {
-    font: .8em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    background:#2e2e2e;
-    padding: 20px;
-    padding-top: 1em;
-    float: right;
-    width: 500px;
-    margin-left: 1em;
-}
-
-.languages h3 {
-    font-weight: normal;
-    color: white;
-    font-size: 1.6em;
-    margin-bottom:.5em;
-}
-
-#tabContainer h4 {
-    color: rgb(83, 104, 138);
-    font-size: 2em;
-}
-
-#tabs{
-    height:30px;
-    overflow:hidden;
-}
-
-#tabs > ul{
-    font: 1em;
-    list-style:none;
-}
-#tabs ul, #tabs li {
-    margin:0;
-    padding:0;
-}
-
-#tabs > ul > li{
-    margin:0 2px 0 0;
-    padding:7px 10px;
-    display:block;
-    float:left;
-    color:#FFF;
-    border-top-left-radius:4px;
-    border-top-right-radius: 4px;
-    background: #CCC;
-}
-
-#tabs > ul > li:hover{
-    background: white;
-    cursor:pointer;
-}
-
-#tabs > ul > .active{
-    background: white; /* old browsers */
-    cursor:pointer;
-}
-
-#containers div {
-    background: white;
-    padding:10px 10px 25px;
-    margin:0;
-    color:#333;
-}
-
-#tabs a {
-    text-decoration: none;
-    color: black;
 }
