@@ -10,7 +10,7 @@
 
 html, body {
     background: #888;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -20,11 +20,6 @@ h1, h2, h3, h4, h5, h6, p {
 
 author, title, h1, h2, h3, h4, h5, h6 {
     color: rgb(107, 107, 132);
-}
-
-author {
-    font: 1.2em Helvetica, Verdana, Geneva, sans-serif;
-    margin-bottom: .35em;
 }
 
 body {
@@ -45,19 +40,38 @@ body {
     margin-left: auto;
 }
 
+author {
+    font: 1.2em Helvetica, Verdana, Geneva, sans-serif;
+    margin-bottom: .35em;
+}
+
+header {
+    overflow: hidden;
+}
+
+nav li {
+    display: inline;
+    font: Helvetica, Geneva, Verdana, sans-serif;
+    margin-left: 1em;
+}
+
+nav li:hover {
+    color: rgb(184, 126, 84);
+}
+
 h1 {
-    font: 1.6em Verdana, Geneva, Helvetica, sans-serif;
+    font: 1.8em Verdana, Geneva, Helvetica, sans-serif;
     margin-bottom: .4em;
     color: rgb(83, 104, 138);
 }
 
-h2 {
+header h2 {
     font: 3.5em Georgia, "Times New Roman", Times, serif;
-    margin-bottom: .3em;
+    padding-bottom: .4em;
 }
 
 h3 {
-    font-size: 1.2em;
+    font-size: 1.3em;
 }
 
 p {
@@ -86,15 +100,6 @@ pre {
     width: 80%;
 }
 
-.center {
-    text-align: center;
-}
-
-header h2 {
-    padding-bottom: .2em;
-    border-bottom: 1px solid gray;
-}
-
 footer {
     border-top: 1px solid gray;
     text-align: center;
@@ -103,12 +108,14 @@ footer {
     margin-top: 1em;
 }
 
+.center {
+    text-align: center;
+}
+
 .flowRight {
     float: right;
-    margin-left: 10px;
 }
 
 .flowLeft {
     float: left;
-    margin-right: 10px;
 }
