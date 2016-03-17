@@ -34,42 +34,6 @@ body {
     line-height: 1.8;
 }
 
-.container {
-    width: 90%;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-author {
-    font: 1.2em Helvetica, Verdana, Geneva, sans-serif;
-    margin-bottom: .35em;
-}
-
-header {
-    overflow: hidden;
-}
-
-nav li {
-    display: inline;
-    font: Helvetica, Geneva, Verdana, sans-serif;
-    margin-left: 1em;
-}
-
-nav li:hover {
-    color: rgb(184, 126, 84);
-}
-
-h1 {
-    font: 1.8em Verdana, Geneva, Helvetica, sans-serif;
-    margin-bottom: .4em;
-    color: rgb(83, 104, 138);
-}
-
-header h2 {
-    font: 3.5em Georgia, "Times New Roman", Times, serif;
-    padding-bottom: .4em;
-}
-
 h3 {
     font-size: 1.3em;
 }
@@ -98,6 +62,53 @@ pre {
     white-space: -o-pre-wrap;
     word-wrap: break-word;
     width: 80%;
+}
+
+.container {
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+author {
+    font: 1.2em Helvetica, Verdana, Geneva, sans-serif;
+    margin-bottom: .35em;
+}
+
+header {
+    overflow: hidden;
+}
+
+header h1 {
+    font: 1.8em Verdana, Geneva, Helvetica, sans-serif;
+    margin-bottom: .4em;
+    color: rgb(83, 104, 138);
+}
+
+header h2 {
+    font: 3.5em Georgia, "Times New Roman", Times, serif;
+    padding-bottom: .4em;
+}
+
+nav {
+    margin-top: 1em;
+}
+
+nav li {
+    display: inline;
+    font: Helvetica, Geneva, Verdana, sans-serif;
+    margin-left: 1.2em;
+}
+
+nav li:hover {
+    color: rgb(184, 126, 84);
+}
+
+.specification {
+    padding: 10px;
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 20px;
 }
 
 footer {
