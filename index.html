@@ -36,7 +36,7 @@
                 <em>Development Language:</em> C++<br />
                 <em>Platform:</em> Mac OSX/Windows<br />
                 <em>Interface:</em> CLI<br />
-                <em>Description:</em> This program lets you construct pitch sets, rows or matrixes from input, then display them or outputs them to a file in the same directory. There are thirteen sub-programs available. Please see below.
+                <em>Description:</em> This program lets you construct pitch sets, rows or matrixes from input, then display them or outputs them to a text file in the same directory. There are thirteen sub-programs available. Please see below.
             </section>
 
             <section>
@@ -62,9 +62,9 @@
 
             <section>
                 <h3 id="one">1. Generate a row of random pitches</h3>
-                <p>This program lets you generate a list of up to 10000 random pitches with the option to output to a text file. It implements the ctime library in C++ in order to generate random numbers. See <a href="mapping.html" target="_blank">mapping</a>.</p>
+                <p>This program lets you generate a list of up to 10000 random pitches. The program implements the ctime library in C++ in order to generate random numbers. See <a href="mapping.html" target="_blank">mapping</a>.</p>
                 <h3 id="two">2. Construct a row with input of any integers</h3>
-                <p>This program takes user input of any integers to form a row of up to 50 pitches. When the input is more than 12 or less than 0, the program modulates it back to the "normal" range by continuously adding or subtracting 12. The user can then create a row based on those "normalized" pitches. See <a href="mapping.html" target="_blank">mapping</a>.</p>
+                <p>This program takes user input of any integers to form a row of up to 50 pitches. When the input is more than 12 or less than 0 (outside of the octave), the program modulates it back to the "normal" range of 0 to 12 by continuously adding or subtracting 12. The user can then create a row based on those "normalized" pitches. See <a href="mapping.html" target="_blank">mapping</a>.</p>
                 <p>The modulation program is implemented as followed:</p>
                 <pre><code>int mod(int num, int sizeRange) {
     while(num &gt;= sizeRange)
