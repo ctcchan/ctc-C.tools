@@ -19,7 +19,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 author, title, h1, h2, h3, h4, h5, h6 {
-    color: rgb(107, 107, 132);
+    color: rgb(100, 80, 132);
 }
 
 body {
@@ -90,6 +90,11 @@ header h2 {
     padding-bottom: .4em;
 }
 
+header h2 a { 
+    text-decoration: none;
+    color: rgb(100, 80, 132);
+}
+
 nav {
     margin-top: 1em;
 }
@@ -102,6 +107,11 @@ nav li {
 
 nav li:hover {
     color: rgb(184, 126, 84);
+}
+
+#screenshot {
+    padding: 20px 140px 0px;
+    max-width: 65%;
 }
 
 .specification {

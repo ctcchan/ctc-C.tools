@@ -15,15 +15,15 @@
                 <hgroup>
                 <author id="#top">Chin Ting Chan</author>
                 <h1>composing tools for the command line</h1>
-                <h2 class="flowLeft">ctools</h2>
+                <h2 class="flowLeft"><a href="index.html">ctools</a></h2>
                 <nav class="flowRight" role="site-navigation">
                     <ul>
-                        <li><a href="mapping.html" target="_blank">mapping</a></li>
-                        <li><a href="matrixes.html" target="_blank">matrixes</a></li>
-                        <li><a href="multiplication.html" target="_blank">multiplication</a></li>
-                        <li><a href="pitch-sets.html" target="_blank">pitch sets</a></li>
-                        <li><a href="set-variants.html" target="_blank">set variants</a></li>
-                        <li><a href="http://www.chintingchan.com" target="_blank">porfolio</a></li>
+                        <li><a href="mapping.html">mapping</a></li>
+                        <li><a href="matrixes.html">matrixes</a></li>
+                        <li><a href="multiplication.html">multiplication</a></li>
+                        <li><a href="pitch-sets.html">pitch sets</a></li>
+                        <li><a href="set-variants.html">set variants</a></li>
+                        <li><a href="http://www.chintingchan.com" target="_blank">portfolio</a></li>
                     </ul>
                 </nav>
                 </hgroup>
@@ -43,7 +43,7 @@
                 <ol>
                     <li><a href="#one" title="section one">Generate a row of random pitches</a></li>
                     <li><a href="#two" title="section two">Construct a row with input of any integers</a></li>
-                    <li><a href="#thre" title="section three">Construct a twelve-tone row to be mapped to a custom table</a></li>
+                    <li><a href="#three" title="section three">Construct a twelve-tone row to be mapped to a custom table</a></li>
                     <li><a href="#four" title="section four">Construct a matrix</a></li>
                     <li><a href="#five" title="section five">Construct a matrix in rotation</a></li>
                     <li><a href="#six" title="section six">Construct a multiplication table</a></li>
@@ -55,8 +55,10 @@
                     <li><a href="#twelve" title="section twelve">Find all permutations of a given set</a></li>
                     <li><a href="#thirteen" title="section thirteen">Find all subsets of a given set</a></li>
                 </ol>
+                <img src="images/screenshot.png" id="screenshot">
             </section>
             <hr />
+
             <main>
             <br />
 
@@ -65,15 +67,6 @@
                 <p>This program lets you generate a list of up to 10000 random pitches. The program implements the ctime library in C++ in order to generate random numbers. See <a href="mapping.html" target="_blank">mapping</a>.</p>
                 <h3 id="two">2. Construct a row with input of any integers</h3>
                 <p>This program takes user input of any integers to form a row of up to 50 pitches. When the input is more than 12 or less than 0 (outside of the octave), the program modulates it back to the "normal" range of 0 to 12 by continuously adding or subtracting 12. The user can then create a row based on those "normalized" pitches. See <a href="mapping.html" target="_blank">mapping</a>.</p>
-                <p>The modulation program is implemented as followed:</p>
-                <pre><code>int mod(int num, int sizeRange) {
-    while(num &gt;= sizeRange)
-        num -= sizeRange;
-    while(num &lt; 0)
-        num += sizeRange;
-    return num;
-}</code></pre>
-                <br />
                 <h3 id="three">3. Construct a twelve-tone row to be mapped to a custom table</h3>
                 <p>This program creates a custom table other than the standard chromatic table (e.g. C = 0, C# = 1, D = 2, Eb = 3, etc.), and lets the user map a custom row to this table. See <a href="mapping.html" target="_blank">mapping</a>.</p>
                 <h3 id="four">4. Construct a matrix</h3>
