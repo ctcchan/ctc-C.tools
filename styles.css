@@ -51,10 +51,9 @@ a:hover {
 }
 
 pre {
-    font-size: 1.4em;
+    font-size: .8em;
     color: white;
     padding: .5em 1em;
-    border-left: 1em solid #A68048;
     background: #666;
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;
@@ -65,7 +64,7 @@ pre {
 }
 
 .container {
-    width: 90%;
+    width: 85%;
     margin-right: auto;
     margin-left: auto;
 }
@@ -77,6 +76,7 @@ author {
 
 header {
     overflow: hidden;
+    padding-top: 15px;
 }
 
 header h1 {
@@ -96,7 +96,7 @@ header h2 a {
 }
 
 nav {
-    margin-top: 1em;
+    padding-bottom: 15px;
 }
 
 nav li {
@@ -109,14 +109,29 @@ nav li:hover {
     color: rgb(184, 126, 84);
 }
 
+#list {
+     padding-left: 20px;
+}
+
+#about {
+    border-top: 1px solid gray;
+    padding-top: 15px;
+}
+
 #screenshot {
     padding: 20px 140px 0px;
     max-width: 65%;
 }
 
-.specification {
+#pic {
+    padding: 15px;
+    max-width: 60%;
+}
+
+#specification {
     padding: 10px;
     border-style: solid;
+    border-color: gray;
     border-width: 1px;
     margin-bottom: 20px;
 }
@@ -127,6 +142,7 @@ footer {
     font-size: .8em;
     line-height: 1.5em;
     margin-top: 1em;
+    padding-bottom: 30px;
 }
 
 .center {
