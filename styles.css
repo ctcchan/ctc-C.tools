@@ -102,15 +102,23 @@ nav {
 nav li {
     display: inline;
     font: Helvetica, Geneva, Verdana, sans-serif;
-    margin-left: 1.2em;
+    margin-left: 1em;
 }
 
 nav li:hover {
     color: rgb(184, 126, 84);
 }
 
+form {
+    border: 1px;
+}
+
+#myReset {
+    padding-left: 10px;
+}
+
 #list {
-     padding-left: 20px;
+    padding-left: 20px;
 }
 
 #about {
