@@ -109,8 +109,8 @@ nav li:hover {
     color: rgb(184, 126, 84);
 }
 
-form {
-    border: 1px;
+form fieldset * {
+    padding-bottom: 20px;
 }
 
 #myReset {
