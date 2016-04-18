@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8" />
         <meta name="description" content="This page hosts the software specifications of the ctools software authored by Chin Ting Chan." />
-        <meta name="keyword" content="composing, composer, tools, matrix, tone, row, pitch sets" />
         <meta name ="robots" content="index,follow" />
         <title>ctools</title>
         <hr />
@@ -25,7 +24,7 @@
                         <li><a href="set-variants.html">set variants</a></li>
                         <li><a href="author.html">author</a></li>
                         <li><a href="contact.html">contact</a></li>
-                        <li><a href="http://github.com/ctcchan" target="_blank">github</a></li>
+                        <li><a href="http://github.com/ctcchan/ctools" target="_blank">github</a></li>
                     </ul>
                 </nav>
                 </hgroup>
@@ -42,13 +41,64 @@
             </section>
 
             <main>
-            <br />
 
             <section>
                 <h3 id="ten">10. Compute the prime set from a given set</h3>
-                <p></p>
+                <p>This program calculates the Prime Set of a given set. It first populates a two-dimensionally array with all possible transpositions of all normal sets, then it subtracts the sets with the smallest pitch in each, reducing them to all start on pitch 0, before doing an insertion sort of all the sets. Insertion sorts of array and two-dimensional array are embedded in one function:</p>
+                <pre><code>void Modules::sortRow(int choice) {
+    if (choice == 1) {
+        for (int i = 0; i &lt; rowSize; i++) { // insertion sort of rowPrime
+            int j = i;
+            while (j &gt; 0 && rowPrime[j] &lt; rowPrime[j - 1]) {
+                swap(rowPrime[j], rowPrime[j - 1]);
+                j--;
+            }
+        }
+    } else {
+        for (int k = 0; k &lt; rowSize * 4; k++) { // insertion sort of all normal sets
+            for (int i = 0; i &lt; rowSize; i++) {
+                int j = i;
+                while (j &gt; 0 && rowMulti[k][j] &lt; rowMulti[k][j - 1]) {
+                    swap(rowMulti[k][j], rowMulti[k][j - 1]);
+                    j--;
+                }
+            }
+        }
+    }
+}</code></pre>
+                <br />
+                <p>Then, the program stores the positions in the two-dimensional array where the smallest outer pitches occur. Using those positions and the above process again, the program finds where the smallest pitches occur starting on the first pitch, then the second pitch, etc., until it finds a position where all pitches are smallest.</p>
+                <pre><code>int position = 0;
+int posarr[48];   // store the smallest numbers from each column
+smallest = 12;
+// find smallest pitch on last column of all rows
+for (int i = 0; i &lt; module.getrowsize(1) * 4; i++)
+    smallest = (module.getmultirow(i, module.getrowsize(1) - 1) &lt; smallest) ? module.getmultirow(i, module.getrowsize(1) - 1) : smallest;
+// store the positions where the smallest outer pitch occurs
+// if the position's value is not the smallest, store -1
+for (int i = 0; i &lt; module.getrowsize(1) * 4; i++)
+    posarr[i] = (module.getmultirow(i, module.getrowsize(1) - 1) == smallest) ? i : -1;
+
+int column = 1; // start the above process again on second pitch
+while (column &lt; module.getrowsize(1) - 1) {
+    smallest = 12;  // initialize smallest to 12 every time
+    // find smallest pitch on each column
+    for (int i = 0; i &lt; module.getrowsize(1) * 4; i++) {
+        if (posarr[i] &gt;= 0)  // only check posarr[i] that are positive
+            smallest = (module.getmultirow(posarr[i], column) &lt; smallest) ? module.getmultirow(posarr[i], column) : smallest;
+    }
+    // store the positions where the smallest 2nd pitch occurs
+    // when the loop comes back, it finds smallest 3rd pitch, etc, but only on positions
+    // where the previous pitch is smallest
+    for (int i = 0; i &lt; module.getrowsize(1) * 4; i++) {
+        if (posarr[i] &gt;= 0)  // only check posarr[i] that are positive
+            posarr[i] = (module.getmultirow(posarr[i], column) == smallest) ? i : -1;
+    }
+    column++;
+}</code></pre>
+                <br />
                 <h3 id="eleven">11. Print the table of pitch class sets</h3>
-                <p></p>
+                <p>This program prints out a table of all pitch class sets that are complimented with Larry Solomon's comments. More info can found <a href="http://solomonsmusic.net/pcsets.htm" target="_blank">here</a>.</p>
             </section>
 
             </main>

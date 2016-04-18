@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8" />
         <meta name="description" content="This page hosts the software specifications of the ctools software authored by Chin Ting Chan." />
-        <meta name="keyword" content="composing, composer, tools, matrix, tone, row, pitch sets" />
         <meta name ="robots" content="index,follow" />
         <title>ctools</title>
         <hr />
@@ -25,7 +24,7 @@
                         <li><a href="set-variants.html">set variants</a></li>
                         <li><a href="author.html">author</a></li>
                         <li><a href="contact.html">contact</a></li>
-                        <li><a href="http://github.com/ctcchan" target="_blank">github</a></li>
+                        <li><a href="http://github.com/ctcchan/ctools" target="_blank">github</a></li>
                     </ul>
                 </nav>
                 </hgroup>
@@ -42,13 +41,20 @@
             </section>
 
             <main>
-            <br />
 
             <section>
                 <h3 id="four">4. Construct a matrix</h3>
-                <p></p>
+                <p>This program lets the users construct a matrix. Many have written programs similar to this, but few have the ability to let users write matrixes that are less than or more than twelve tones. This program allows users to write matrixes that are constructed by up to 50 pitches, and are formated with the traditional method of label row numbers, where labels for labels are numbered in relation to their transposition from P0.</p>
+                <p>This program finds the transpositions between each pitches of the row, using this array of transposition indexes to calculate all rows. The transposition function is implemented as follow:</p>
+                <pre><code>void Modules::transposition(int rType) {
+    setRow(0, 0, 4); // no transposition for the first pitch
+    for (int i = 1; i &lt; getRowSize(1); i++)
+        // initialize a transposition table to find the distance between each pitch in the row
+        setRow(i, getRow(i, rType) - getRow(i - 1, rType), 4); // start with subtracting the 1st pitch from the 2nd pitch
+}</code></pre>
+                <br />
                 <h3 id="five">5. Construct a matrix in rotation</h3>
-                <p></p>
+                <p>Similar to the previous matrix program, this program additionally allows users to print the matrixes in rotation to the right or left by one index (one column) at a time, changing the pitch sequence of all the rows. For example, rotating the row C-D-E to the right by one, the sequence would become D-E-C.</p>
             </section>
 
             </main>
