@@ -119,8 +119,7 @@ void Programs::matrix(Printer &print, Modules &module) {
         tranTableMatrix[i] = module.mod(module.getRow(i, 1) - module.getRow(0, 1));
 
     // print out the matrix table
-    const string TABLE_NUM[12] = { "0 ", "1 ", "2 ", "3 ", "4 ", "5 ",
-        "6 ", "7 ", "8 ", "9 ", "10", "11" };
+    const string TABLE_NUM[12] = { "0 ", "1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "10", "11" };
     cout << "     "; // print out I
     if (choice == 'y')
         outputFile << "     ";

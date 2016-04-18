@@ -3,7 +3,7 @@
 ### Version 2.0
 
 ### Download
-Download the source code using Git. (most up to date version)
+Download the source code using Git (most up-to-date version).
 
     $ git clone https://github.com/ctcchan/ctools.git
 
