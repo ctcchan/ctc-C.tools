@@ -125,7 +125,7 @@ form fieldset * {
     padding-top: 15px;
 }
 
-#screenshot {
+.samples {
     padding: 20px 140px 0px;
     max-width: 65%;
 }

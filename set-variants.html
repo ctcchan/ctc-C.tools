@@ -44,7 +44,7 @@
 
             <section>
                 <h3 id="twelve">12. Find all permutations of a given set</h3>
-                <p>This program prints all permutations of a set given by the user. It uses a recursion algorithm to sort out all possible permutations from a set of pitches concatenated in a string, then print out a table of all the possible sets. The code is implemented as follow:</p>
+                <p>This program prints all permutations of a set given by the user. It uses a recursion algorithm to sort out all possible permutations from a set of pitches concatenated in a string, then prints out a table of all the possible sets. The code is implemented as follow:</p>
                 <pre><code>void Modules::permute(string soFar, string rest, int arrSize, char out, ofstream &outFile) {
     if (rest == "") {	// convert char symbols from the sub-strings of soFar to pitches, then print out
         for (int i = 0; i &lt; arrSize; i++) {
@@ -65,7 +65,7 @@
 }</code></pre>
                 <br />
                 <h3 id="thirteen">13. Find all subsets of a given set</h3>
-                <p>This program prints all subsets of a set given by the user. It uses a recursion algorithm to sort out all possible subsets from a set of pitches concatenated in a string, then print out a table of all the possible sets. The code is implemented as follow:</p>
+                <p>This program prints all subsets of a set given by the user. It uses a recursion algorithm to sort out all possible subsets from a set of pitches concatenated in a string, then prints out a table of all the possible sets. The code is implemented as follow:</p>
                 <pre><code>void Modules::subsets(string soFar, string rest, char out, ofstream &outFile) {
     if (rest == "") {	// convert char symbols from the sub-strings of soFar to pitches, then print out
         for (int i = 0; i &lt; static_cast&lt;int&gt;(soFar.length()); i++) {

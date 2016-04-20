@@ -44,7 +44,7 @@
 
             <section>
                 <h3 id="ten">10. Compute the prime set from a given set</h3>
-                <p>This program calculates the Prime Set of a given set. It first populates a two-dimensionally array with all possible transpositions of all normal sets, then it subtracts the sets with the smallest pitch in each, reducing them to all start on pitch 0, before doing an insertion sort of all the sets. Insertion sorts of array and two-dimensional array are embedded in one function:</p>
+                <p>This program calculates the Prime Set of a given set. It first populates a two-dimensional array with all possible transpositions of all normal sets, then it subtracts the sets with the smallest pitch in each, reducing them to all start on pitch 0, before doing an insertion sort of all the sets. Insertion sorts of arrays and two-dimensional arrays are embedded in one function, where it access the private members from the Modules object:</p>
                 <pre><code>void Modules::sortRow(int choice) {
     if (choice == 1) {
         for (int i = 0; i &lt; rowSize; i++) { // insertion sort of rowPrime
@@ -98,7 +98,7 @@ while (column &lt; module.getrowsize(1) - 1) {
 }</code></pre>
                 <br />
                 <h3 id="eleven">11. Print the table of pitch class sets</h3>
-                <p>This program prints out a table of all pitch class sets that are complimented with Larry Solomon's comments. More info can found <a href="http://solomonsmusic.net/pcsets.htm" target="_blank">here</a>.</p>
+                <p>This program prints out a table of all pitch class sets. They are complimented with commentaries by theorist Larry Solomon. More info can found <a href="http://solomonsmusic.net/pcsets.htm" target="_blank">here</a>.</p>
             </section>
 
             </main>

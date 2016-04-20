@@ -44,13 +44,13 @@
 
             <section>
                 <h3 id="one">1. Generate a row of random pitches</h3>
-                <p>To generate random pitches, this program can generate up to 10000 numbers using the ctime library, and then translate to pitch names by mapping the numbers to fixed pitches, using a constant table such as below:</p>
+                <p>To generate random pitches, this program randomizes up to 10000 numbers using the ctime library, and then translates them to pitch names by mapping them to fixed table of pitches. It uses a constant table as shown below:</p>
                 <pre><code>const string TABLE[12] = {"C  ", "C# ", "D  ", "Eb ", "E  ", "F  ", "F# ", "G  ", "Ab ", "A  ", "Bb ", "B  "};</code></pre>
                 <p>Then, a random generater is "seeded" using the following code:</p>
                 <pre><code>srand(unsigned(time(NULL)));</code></pre>
                 <br />
                 <h3 id="two">2. Construct a row with input of any integers</h3>
-                <p>In this program, the user is asked to input a row consisting of up to 50 integers that fall between -2147483647 and 2147483647. Each integer is then run through a modulation program that transposes the integer (if it is outside the range of 0 to 11) back to the range, and returns the corresponding pitch number for use. This program can be used put numbers that are normally larger or smaller than an octave into a "musical" context.</p>
+                <p>In this program, the user is asked to input a row consisting of up to 50 integers that fall between -2147483647 and 2147483647 (the max number of integer an "int" in C++ can hold). Each integer is then run through a modulation program that transposes it (if it is outside the range of 0 to 11) back to the range, and returns the corresponding pitch number for use. This program can be used to put numbers that are normally larger or smaller than an octave into a "musical" context.</p>
                 <p>The modulation program is implemented as followed:</p>
                 <pre><code>int mod(int num, int sizeRange) {
     while(num &gt;= sizeRange)
@@ -59,10 +59,10 @@
         num += sizeRange;
     return num;
 }</code></pre>
-                <p>This function run for as long as the integer is larger than 11 or smaller than 0. The final result is a stream of chromatic pitches.</p>
                 <br />
+                <p>This function runs for as long as the integer is larger than 11 or smaller than 0. The final result is a stream of pitches.</p>
                 <h3 id="three">3. Construct a twelve-tone row to be mapped to a custom table</h3>
-                <p>Instead of using the default chromatic table (C-C#-D-Eb-etc.), the user is given the option to use a custom table. For example, if using a reverse chromatic table (C-B-Bb-A-etc.), the pitches of (0-1-2-3) is (C-B-Bb-A) instead of (C-C#-D-Eb). The user is given an option to generate a twelve-tone row randomly, and it is implemented as below:</p>
+                <p>Instead of using the default chromatic table (C-C#-D-Eb-etc.), the user is given the option to use a custom table. For example, if using a reverse chromatic table (C-B-Bb-A-etc.), the pitches of (0-1-2-3) mapped to this table would be (C-B-Bb-A) instead of (C-C#-D-Eb). The user is given an option to generate a twelve-tone row randomly to create this table, and it is implemented as below:</p>
                 <pre><code>void Modules::generateTwelve(int rType) {
     bool repeated;
     int generatedPitch;
@@ -86,6 +86,7 @@
     }
 }</code></pre>
                 <br />
+                <p>This twelve-tone generator is also used in other programs.</p>
             </section>
 
             </main>
