@@ -33,7 +33,7 @@
             <section id="specification">
                 <em>Title:</em> "ctools"<br />
                 <em>Version:</em> 2.0<br />
-                <em>Year:</em> 2015-present<br />
+                <em>Year:</em> 2015-2016<br />
                 <em>Development Language:</em> C++<br />
                 <em>Platform:</em> Mac OSX/Windows<br />
                 <em>Interface:</em> CLI<br />
@@ -46,7 +46,7 @@
                 <h3 id="one">1. Generate a row of random pitches</h3>
                 <p>To generate random pitches, this program randomizes up to 10000 numbers using the ctime library, and then translates them to pitch names by mapping them to fixed table of pitches. It uses a constant table as shown below:</p>
                 <pre><code>const string TABLE[12] = {"C  ", "C# ", "D  ", "Eb ", "E  ", "F  ", "F# ", "G  ", "Ab ", "A  ", "Bb ", "B  "};</code></pre>
-                <p>Then, a random generater is "seeded" using the following code:</p>
+                <p>Then, a random generator is "seeded" using the following code:</p>
                 <pre><code>srand(unsigned(time(NULL)));</code></pre>
                 <br />
                 <h3 id="two">2. Construct a row with input of any integers</h3>

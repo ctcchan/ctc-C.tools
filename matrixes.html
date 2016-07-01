@@ -33,7 +33,7 @@
             <section id="specification">
                 <em>Title:</em> "ctools"<br />
                 <em>Version:</em> 2.0<br />
-                <em>Year:</em> 2015-present<br />
+                <em>Year:</em> 2015-2016<br />
                 <em>Development Language:</em> C++<br />
                 <em>Platform:</em> Mac OSX/Windows<br />
                 <em>Interface:</em> CLI<br />
@@ -44,8 +44,8 @@
 
             <section>
                 <h3 id="four">4. Construct a matrix</h3>
-                <p>This program lets the users construct a matrix. Many have written programs similar to this, but few have the ability to write matrixes that are less than or more than twelve tones. This program allows users to write matrixes that are constructed by up to 50 pitches, and are formated with the traditional method of labeling row numbers, where labels for pitches are numbered in relation to their transposition from P0.</p>
-                <p>To find transpositions, it adds numbers to each columns and modulate back to the range of 0-11 if the transposition exceeds 12; to find inversions, he numbers are subtracted by 12. Specifically, this program finds the transpositions between each pitches in the row, then uses this array of transposition indexes to calculate the values for all rows. The transposition function is implemented as follow:</p>
+                <p>This program lets the users construct a matrix. Many have written programs similar to this, but few give the option to write matrixes that are less than or more than twelve tones. This program allows users to write matrixes that are constructed by up to 50 pitches, and are formatted with the traditional method of labeling row numbers, where labels for pitches are numbered in relation to their transposition from P0.</p>
+                <p>To find transpositions, it adds numbers to each columns and modulates back to the range of 0-11 if the transposition exceeds 12; to find inversions, the numbers are subtracted by 12. Specifically, this program finds the transpositions between each pitch in the row, then uses this array of transposition indexes to calculate the values for all rows. The transposition function is implemented as followed:</p>
                 <pre><code>void Modules::transposition(int rType) {
     setRow(0, 0, 4); // no transposition for the first pitch
     for (int i = 1; i &lt; getRowSize(1); i++)
